@@ -75,6 +75,20 @@ function handleSignup(event) {
         return;
     }
 
-    // If all fields are valid, log the form data to the console
+    // If all fields are valid, log the form data to the console (temporary for testing)
     console.log({ fullName, email, company, password, confirmPassword });
+
+    // Add new user 
+    const newUser = {id: Date.now(), fullName, email, company, password, createdAt: new Date().toISOString()};
+    users.push(newUser);
+    saveUsers(users);
+
+    // display success message, reset form and redirect to login page
+    const successMessage = document.getElementById('signup-success');
+    successMessage.textContent = 'Account created successfully! Please log in.';
+
+    signupForm.reset();
+    setTimeout(() => {
+        window.location.href = './index.html';
+    }, 1500);
 }
