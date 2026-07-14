@@ -1,4 +1,4 @@
-import {getSession} from './session.js'; // session key or null
+import {getSession} from './storage.js'; // session key or null
 
 //redirect to dashboard if authorized
 export function redirectIfAuthenticated() {
