@@ -1,5 +1,5 @@
 import {redirectIfAuthenticated} from './guard.js';
-import {getUsers, saveUsers} from './storage.js';
+import {getUsers, saveUsers, saveSession} from './storage.js';
 
 redirectIfAuthenticated();
 
@@ -8,6 +8,9 @@ const loginForm = document.getElementById('login-form');
 
 if (signupForm) {
     signupForm.addEventListener("submit", handleSignup);
+}
+if (loginForm) {
+    loginForm.addEventListener("submit", handleLogin);
 }
 
 function handleSignup(event) {
@@ -91,4 +94,49 @@ function handleSignup(event) {
     setTimeout(() => {
         window.location.href = './index.html';
     }, 1500);
+}
+
+function handleLogin(event) {
+    event.preventDefault();
+
+    const email = document.getElementById('email').value.trim().toLowerCase();
+    const password = document.getElementById('password').value;
+
+    //validate log in fields and display error messages
+    const EmailError = document.getElementById('email-error');
+    EmailError.textContent = '';
+    const PasswordError = document.getElementById('password-error');
+    PasswordError.textContent = '';
+    const loginError = document.getElementById('login-error');
+    loginError.textContent = '';
+
+    if (!email) {
+        EmailError.textContent = 'Please enter your email.';
+    }
+
+    if (!password) {
+        PasswordError.textContent = 'Please enter your password.';
+    }
+    
+    if (!email || !password) {
+        return;
+    }
+
+    const users = getUsers();
+    const user = users.find(user => user.email === email && user.password === password);
+
+    if (!user) {
+        loginError.textContent = 'Invalid email or password.';
+        return;
+    }
+
+    //create new session and save it to local storage
+    const session = {userId: user.id, email: user.email, loginAt: new Date().toISOString()};
+    saveSession(session);
+
+    //redirect to dashboard
+    window.location.href = './dashboard.html';
+
+    // Log form values to the console (temporary for testing)
+    console.log({ email, password });
 }
