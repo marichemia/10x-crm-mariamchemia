@@ -1,4 +1,4 @@
-import {getSession} from './storage.js'; // session key or null
+import {getSession} from './storage.js'; // session obj or null
 
 //redirect to dashboard if authorized
 export function redirectIfAuthenticated() {
@@ -12,7 +12,8 @@ export function redirectIfAuthenticated() {
 export function redirectIfNotAuthenticated() {
   const session = getSession();
   if (!session) {
-    window.location.href = "/index.html";
+    window.location.href = "./index.html";
+    return null;
   }
   
   return session;

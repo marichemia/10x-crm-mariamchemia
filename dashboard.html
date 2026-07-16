@@ -6,9 +6,31 @@
      <title>10x CRM - Dashboard</title>
     <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
-    <h1>Dashboard</h1>
-    <button type="button" id="logout-button">Logout</button>
+<body class="app-page">
+    <header class="header">
+        <a href="./dashboard.html" class="logo">10x CRM</a>
+        <nav>
+            <a href="./dashboard.html" class="nav-link active">Dashboard</a>
+            <a href="./clients.html" class="nav-link">Clients</a>
+            <a href="./profile.html" class="nav-link">Profile</a>
+        </nav>
+        <div class="app-actions">
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch Theme">
+                <span class="toggle-icon"></span>
+            </button>
+            <button type="button" id="logout-button" class="logout-button">Logout</button>
+        </div>
+    </header>
+    <main class="dashboard-content">
+        <section class="dashboard-welcome">
+            <h1>Welcome Back, <span id="user-name"></span>!</h1>
+
+            <div class="dashboard-date-time-display">
+                <span id="current-date"></span>
+                <span id="current-time"></span>
+            </div>
+        </section>
+    </main>
     <script type="module" src="./js/dashboard.js"></script>
 </body>
 </html>
