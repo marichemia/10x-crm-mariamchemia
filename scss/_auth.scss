@@ -119,3 +119,70 @@
         cursor: not-allowed;
     }
 }
+
+.auth-footer {
+    margin: 24px 0 0;
+    color: vars.$color-text-secondary;
+    font-size: vars.$font-size-footer;
+    text-align: center;
+}
+
+.auth-link {
+    color: vars.$color-primary;
+    font-weight: bold;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.auth-error {
+    margin: 16px 0 0;
+    color: vars.$color-error;
+    font-size: vars.$font-size-footer;
+    text-align: center;
+
+    &:empty {
+        display: none;
+    }
+}
+
+.auth-success {
+    position: fixed;
+    top: 24px;
+    right: 24px;
+    z-index: 1000;
+    max-width: calc(100% - 48px);
+    margin: 0 auto;
+    padding: 16px 20px;
+    color: vars.$color-surface;
+    background-color: vars.$color-success;
+    border-radius: 8px;
+    box-shadow: 0px 10px 30px rgba(30, 55, 102, 0.1);
+    font-size: vars.$font-size-footer;
+
+
+    &:empty {
+        display: none;
+    }
+}
+
+.form-input.input-error {
+    color: vars.$color-error;
+   
+    &:focus {
+        border-color: vars.$color-error;
+    }
+}
+
+@media (max-width: 480px) {
+   .auth-container {
+        align-items: flex-start;
+        padding: 16px;
+   }
+
+   .auth-card {
+        padding: 24px;
+   }
+}

@@ -16,23 +16,30 @@ if (loginForm) {
 function handleSignup(event) {
     event.preventDefault();
 
-    const fullName = document.getElementById('full-name').value.trim();
-    const email = document.getElementById('email').value.trim().toLowerCase();
+    const fullNameInput = document.getElementById('full-name'); //actual HTML input element
+    const fullName = fullNameInput.value.trim(); //inputed value
+    const emailInput = document.getElementById('email'); 
+    const email = emailInput.value.trim().toLowerCase();
     const company = document.getElementById('company').value.trim();
-    const password = document.getElementById('password').value.trim();
-    const confirmPassword = document.getElementById('confirm-password').value.trim();
+    const passwordInput = document.getElementById('password');
+    const confirmPasswordInput = document.getElementById('confirm-password');
+    const password = passwordInput.value.trim();
+    const confirmPassword = confirmPasswordInput.value.trim();
 
     // Validate full name length and display error message
     const fullNameError = document.getElementById('full-name-error');
     fullNameError.textContent = '';
+    fullNameInput.classList.remove('input-error');
 
     if(fullName.length < 3) {
         fullNameError.textContent = 'Full name must be at least 3 characters long.';
+        fullNameInput.classList.add('input-error');
     }
 
     //validate email format and display error message
     const emailError = document.getElementById('email-error');
     emailError.textContent = '';
+    emailInput.classList.remove('input-error');
     
     const atIndex = email.indexOf('@');
     const dotIndex = email.lastIndexOf('.');
@@ -40,6 +47,7 @@ function handleSignup(event) {
 
     if (!isEmailValid) {
         emailError.textContent = 'Please enter a valid email address.';
+        emailInput.classList.add('input-error');
     }
 
     //Validate if email already exists and display error message
@@ -48,11 +56,13 @@ function handleSignup(event) {
 
     if (isEmailValid && emailExists) {
         emailError.textContent = 'Email already exists. Please use a different email.';
+        emailInput.classList.add('input-error');
     }
 
     // Validate password length and display error message
     const passwordError = document.getElementById('password-error');
     passwordError.textContent = '';
+    passwordInput.classList.remove('input-error');
 
     const minLength = 8;
     const containsLetter = /[a-zA-Z]/.test(password);
@@ -61,14 +71,17 @@ function handleSignup(event) {
 
     if (!isPasswordValid) {
         passwordError.textContent = 'Password must be at least 8 characters long and contain both letters and numbers.';
+        passwordInput.classList.add('input-error');
     }
 
     // Validate confirm password and display error message
     const confirmPasswordError = document.getElementById('confirm-password-error');
     confirmPasswordError.textContent = '';
+    confirmPasswordInput.classList.remove('input-error');
 
     if (password !== confirmPassword) {
         confirmPasswordError.textContent = 'Passwords do not match.';
+        confirmPasswordInput.classList.add('input-error');
     }
 
     // Stop sign up if there are any validation errors
@@ -99,10 +112,16 @@ function handleSignup(event) {
 function handleLogin(event) {
     event.preventDefault();
 
-    const email = document.getElementById('email').value.trim().toLowerCase();
-    const password = document.getElementById('password').value;
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password');
+
+    const email = emailInput.value.trim().toLowerCase();
+    const password = passwordInput.value;
 
     //validate log in fields and display error messages
+    emailInput.classList.remove('input-error');
+    passwordInput.classList.remove('input-error');
+
     const EmailError = document.getElementById('email-error');
     EmailError.textContent = '';
     const PasswordError = document.getElementById('password-error');
@@ -112,10 +131,12 @@ function handleLogin(event) {
 
     if (!email) {
         EmailError.textContent = 'Please enter your email.';
+        emailInput.classList.add('input-error');
     }
 
     if (!password) {
         PasswordError.textContent = 'Please enter your password.';
+        passwordInput.classList.add('input-error');
     }
     
     if (!email || !password) {
@@ -127,6 +148,8 @@ function handleLogin(event) {
 
     if (!user) {
         loginError.textContent = 'Invalid email or password.';
+        emailInput.classList.add('input-error');
+        passwordInput.classList.add('input-error');
         return;
     }
 
