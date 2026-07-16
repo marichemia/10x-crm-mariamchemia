@@ -170,7 +170,7 @@
 }
 
 .form-input.input-error {
-    color: vars.$color-error;
+    border-color: vars.$color-error;
    
     &:focus {
         border-color: vars.$color-error;

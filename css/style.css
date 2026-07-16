@@ -167,7 +167,7 @@ input {
 }
 
 .form-input.input-error {
-  color: #c0392b;
+  border-color: #c0392b;
 }
 .form-input.input-error:focus {
   border-color: #c0392b;
