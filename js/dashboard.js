@@ -1,5 +1,5 @@
 import {redirectIfNotAuthenticated} from './guard.js';
-import {clearSession, getUsers} from './storage.js';
+import {clearSession, getUsers, getTheme, saveTheme} from './storage.js';
 
 const session = redirectIfNotAuthenticated();
 
@@ -27,8 +27,23 @@ function displayDateTime() {
 }
 
 displayDateTime();
-setInterval(displayDateTime, 1000); //update every sec
+setInterval(displayDateTime, 1000); 
 
+//toggle between light and dark themes
+const toggleBtn = document.getElementById("theme-toggle");
+const savedTheme = getTheme();
+
+if (savedTheme === "dark") {
+    document.body.classList.add("dark-theme");
+    toggleBtn.classList.add("active");
+}
+
+toggleBtn.addEventListener("click", () => {
+    const isDark = document.body.classList.toggle("dark-theme");
+
+    toggleBtn.classList.toggle("active", isDark);
+    saveTheme(isDark ? "dark" : "light");
+})
 
 //logout and clear session
 document.getElementById('logout-button').addEventListener('click', () => {

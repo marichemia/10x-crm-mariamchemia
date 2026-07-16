@@ -124,6 +124,60 @@
     }
 }
 
+//dark theme colors
+
+.app-page.dark-theme {
+    .dashboard-welcome {
+        h1 {
+            color: vars.$color-dark-text;
+        }
+    }
+
+    .dashboard-date-time-display {
+        color: vars.$color-dark-text-secondary;
+    }
+
+    .stat-card, .pipeline-card, .recent-clients-card {
+        background-color: vars.$color-dark-surface;
+        border-color: vars.$color-dark-border;
+    }
+
+    .stat-card {
+        h2 {
+            color: vars.$color-dark-text-secondary;
+        }
+
+        p {
+            color: vars.$color-dark-text;
+        }
+    }
+
+    .pipeline-card, .recent-clients-card {
+        h2 {
+            color: vars.$color-dark-text;
+        }
+    }
+
+    .pipeline-stats {
+        p {
+            color: vars.$color-dark-text-secondary;
+            background-color: vars.$color-dark-bg;       
+        }
+
+        span {
+            color: vars.$color-dark-text;
+        }
+    }
+
+    #recent-clients-list p {
+        color: vars.$color-dark-text-secondary;
+    }
+
+    .view-clients-link {
+        color: vars.$color-dark-text;
+    }
+}
+
 @media (max-width: 900px) {
     .dashboard-stats {
         grid-template-columns: repeat(2, 1fr);

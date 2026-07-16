@@ -255,6 +255,14 @@ input {
   background-color: #ffffff;
   border-radius: 50%;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.theme-toggle.active {
+  background-color: #1e3766;
+}
+.theme-toggle.active .toggle-icon {
+  transform: translateX(22px);
 }
 
 .logout-button {
@@ -269,6 +277,37 @@ input {
 .logout-button:hover {
   color: #ffffff;
   background-color: #1e3766;
+}
+
+.app-page.dark-theme {
+  background-color: #111827;
+  color: #f3f4f6;
+}
+.app-page.dark-theme .header {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+.app-page.dark-theme .logo {
+  color: #f3f4f6;
+}
+.app-page.dark-theme .nav-link {
+  color: #cbd5e1;
+}
+.app-page.dark-theme .nav-link:hover {
+  color: #f3f4f6;
+  background-color: rgba 255, 255, 255, 0.08;
+}
+.app-page.dark-theme .nav-link.active {
+  color: #111827;
+  background-color: #f3f4f6;
+}
+.app-page.dark-theme .logout-button {
+  color: #f3f4f6;
+  border-color: #f3f4f6;
+}
+.app-page.dark-theme .logout-button:hover {
+  color: #111827;
+  background-color: #f3f4f6;
 }
 
 @media (max-width: 700px) {
@@ -390,6 +429,39 @@ input {
 }
 .dashboard-overview .view-clients-link:hover {
   text-decoration: underline;
+}
+
+.app-page.dark-theme .dashboard-welcome h1 {
+  color: #f3f4f6;
+}
+.app-page.dark-theme .dashboard-date-time-display {
+  color: #cbd5e1;
+}
+.app-page.dark-theme .stat-card, .app-page.dark-theme .pipeline-card, .app-page.dark-theme .recent-clients-card {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+.app-page.dark-theme .stat-card h2 {
+  color: #cbd5e1;
+}
+.app-page.dark-theme .stat-card p {
+  color: #f3f4f6;
+}
+.app-page.dark-theme .pipeline-card h2, .app-page.dark-theme .recent-clients-card h2 {
+  color: #f3f4f6;
+}
+.app-page.dark-theme .pipeline-stats p {
+  color: #cbd5e1;
+  background-color: #111827;
+}
+.app-page.dark-theme .pipeline-stats span {
+  color: #f3f4f6;
+}
+.app-page.dark-theme #recent-clients-list p {
+  color: #cbd5e1;
+}
+.app-page.dark-theme .view-clients-link {
+  color: #f3f4f6;
 }
 
 @media (max-width: 900px) {

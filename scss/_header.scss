@@ -75,6 +75,16 @@
     background-color: vars.$color-surface;
     border-radius: 50%;
     box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+
+    transition: transform 0.2s ease;
+}
+
+.theme-toggle.active {
+    background-color: vars.$color-primary;
+
+    .toggle-icon {
+        transform: translateX(22px);
+    }
 }
 
 .logout-button {
@@ -89,6 +99,46 @@
     &:hover {
         color: vars.$color-surface;
         background-color: vars.$color-primary;
+    }
+}
+
+//dark theme colors
+
+.app-page.dark-theme {
+    background-color: vars.$color-dark-bg;
+    color: vars.$color-dark-text;
+
+    .header {
+        background-color: vars.$color-dark-surface;
+        border-color: vars.$color-dark-border;
+    }
+
+    .logo {
+        color: vars.$color-dark-text;
+    }
+
+    .nav-link {
+        color: vars.$color-dark-text-secondary;
+
+        &:hover {
+            color: vars.$color-dark-text;
+            background-color: rgba (255, 255, 255, 0.08);
+        }
+
+        &.active {
+            color: vars.$color-dark-bg;
+            background-color: vars.$color-dark-text;
+        }
+    }
+
+    .logout-button {
+        color: vars.$color-dark-text;
+        border-color: vars.$color-dark-text;
+
+        &:hover {
+            color: vars.$color-dark-bg;
+            background-color: vars.$color-dark-text;
+        }
     }
 }
 

@@ -1,5 +1,6 @@
 const USERS_KEY = "crm_users";
 const SESSION_KEY = "crm_session";
+const THEME_KEY = "crm_theme";
 
 
 export function getUsers() {
@@ -22,4 +23,12 @@ export function saveSession(session) {
 
 export function clearSession() {
   localStorage.removeItem(SESSION_KEY);
+}
+
+export function getTheme() {
+  return localStorage.getItem(THEME_KEY) || "light";
+}
+
+export function saveTheme(theme) {
+  localStorage.setItem(THEME_KEY, theme);
 }
