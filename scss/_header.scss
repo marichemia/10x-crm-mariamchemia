@@ -91,3 +91,21 @@
         background-color: vars.$color-primary;
     }
 }
+
+@media (max-width: 700px) {
+    .header {
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 16px;
+    }
+
+    .header nav {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .app-actions {
+        margin-left: auto;
+    }
+}
