@@ -182,5 +182,93 @@ input {
     padding: 24px;
   }
 }
+.app-page {
+  min-height: 100vh;
+  margin: 0;
+  background-color: #e2dede;
+  color: #1f2937;
+  font-family: Arial, sans-serif;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 16px 32px;
+  background-color: #ffffff;
+  border-bottom: 2px solid #b8b8b8;
+}
+
+.logo {
+  color: #1e3766;
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  padding: 8px 12px;
+  color: #6b7280;
+  border-radius: 8px;
+  font-weight: bolder;
+  text-decoration: none;
+}
+.nav-link:hover {
+  color: #1e3766;
+  background-color: rgba(30, 55, 102, 0.08);
+}
+.nav-link.active {
+  color: #ffffff;
+  background-color: #1e3766;
+}
+
+.app-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.theme-toggle {
+  position: relative;
+  width: 46px;
+  height: 24px;
+  padding: 0;
+  background-color: rgba(30, 55, 102, 0.15);
+  border: 1px solid #b8b8b8;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.toggle-icon {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 16px;
+  height: 16px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.logout-button {
+  padding: 8px 14px;
+  color: #1e3766;
+  background-color: transparent;
+  border: 1px solid #1e3766;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.logout-button:hover {
+  color: #ffffff;
+  background-color: #1e3766;
+}
 
 /*# sourceMappingURL=style.css.map */
