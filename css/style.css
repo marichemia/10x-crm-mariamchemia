@@ -13,8 +13,113 @@ input {
   font: inherit;
 }
 
-body {
-  background-color: #e2e0e0;
+.auth-page {
+  min-height: 100vh;
+  background-color: #e2dede;
+  color: #1e3766;
+  font-family: Arial, sans-serif;
+}
+
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 40px;
+  background-color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0px 10px 30px rgba(30, 55, 102, 0.1);
+}
+
+.auth-logo {
+  margin: 0 0 24px 0;
+  color: #1e3766;
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.auth-title {
+  margin: 0 0 8px 0;
+  color: #1e3766;
+  font-size: 28px;
+  text-align: center;
+}
+
+.auth-subtitle {
+  margin: 0 0 32px 0;
+  color: #6b7280;
+  font-size: 16px;
+  text-align: center;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.auth-form .form-field {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+.auth-form .form-label {
+  margin-bottom: 8px;
+  color: #1f2937;
+  font-size: 14px;
+  font-weight: 600;
+}
+.auth-form .form-input {
+  width: 100%;
+  padding: 12px 14px;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  outline: none;
+}
+.auth-form .form-input:focus {
+  outline: none;
+  border-color: #1e3766;
+  border-width: 1.5px;
+  box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.2);
+}
+.auth-form .form-input .form-error, .auth-form .form-input .form-hint {
+  margin: 6px 0 0;
+  font-size: 12px;
+}
+.auth-form .form-input .form-error {
+  color: #c0392b;
+}
+.auth-form .form-input .form-error:empty {
+  display: none;
+}
+.auth-form .form-input .form-hint {
+  color: #6b7280;
+}
+
+.primary-button {
+  width: 100%;
+  padding: 12px 14px;
+  color: #ffffff;
+  background-color: #1e3766;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.primary-button:hover {
+  background-color: rgb(18.4090909091, 33.75, 62.5909090909);
+}
+.primary-button:disabled {
+  background-color: rgb(53.1818181818, 97.5, 180.8181818182);
+  cursor: not-allowed;
 }
 
 /*# sourceMappingURL=style.css.map */
