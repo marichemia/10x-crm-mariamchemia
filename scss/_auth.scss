@@ -81,22 +81,23 @@
             box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.2);
         }
 
-        .form-error, .form-hint {
-            margin: 6px 0 0 ;
-            font-size: 12px;
-        }
+    }
 
-        .form-error {
-            color: vars.$color-error;
+    .form-error, .form-hint {
+        margin: 6px 0 0 ;
+        font-size: 12px;
+    }
 
-            &:empty {
-                display: none;
-            }
-        }
+    .form-error {
+        color: vars.$color-error;
 
-        .form-hint {
-            color: vars.$color-text-secondary;
+        &:empty {
+            display: none;
         }
+    }
+
+    .form-hint {
+        color: vars.$color-text-secondary;
     }
 }
 

@@ -90,17 +90,17 @@ input {
   border-width: 1.5px;
   box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.2);
 }
-.auth-form .form-input .form-error, .auth-form .form-input .form-hint {
+.auth-form .form-error, .auth-form .form-hint {
   margin: 6px 0 0;
   font-size: 12px;
 }
-.auth-form .form-input .form-error {
+.auth-form .form-error {
   color: #c0392b;
 }
-.auth-form .form-input .form-error:empty {
+.auth-form .form-error:empty {
   display: none;
 }
-.auth-form .form-input .form-hint {
+.auth-form .form-hint {
   color: #6b7280;
 }
 
