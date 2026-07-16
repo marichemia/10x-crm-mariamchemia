@@ -1,0 +1,154 @@
+@use 'variables' as vars;
+
+.dashboard-content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.dashboard-welcome {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 32px;
+
+    h1 {
+        margin: 0;
+        color: vars.$color-primary;
+        font-size: vars.$font-size-welcome;
+    }
+
+    .dashboard-date-time-display {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        color: vars.$color-text-secondary;
+        text-align: right;
+    }
+}
+
+
+
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+
+    .stat-card {
+        padding: 24px;
+        background-color: vars.$color-surface;
+        border: 1px solid vars.$color-border;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(30, 55, 102, 0.08);
+
+        h2 {
+            margin: 0 0 12px;
+            color: vars.$color-text-secondary;
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        p {
+            margin: 0;
+            color: vars.$color-primary;
+            font-size: vars.$font-size-welcome;
+            font-weight: bold;
+        }
+    }
+
+    
+}
+
+.dashboard-overview {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    margin-top: 24px;
+
+    .pipeline-card, .recent-clients-card {
+        padding: 24px;
+        background-color: vars.$color-surface;
+        border: 1px solid vars.$color-border;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(30, 55, 102, 0.08);
+
+        h2 {
+            margin: 0 0 20px;
+            color: vars.$color-primary;
+            font-size: vars.$font-size-header;
+        }
+    }
+
+    .pipeline-stats {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+
+        p {
+            margin: 0;
+            padding: 12px;
+            color: vars.$color-text-secondary;
+            background-color: vars.$color-bg;
+            border-radius: 8px;
+        }
+
+        span {
+            color: vars.$color-primary;
+            font-weight: bold;
+        }
+    }
+
+    #recent-client-list {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-bottom: 20px;
+
+        p {
+            margin: 0;
+            color: vars.$color-text-secondary;
+        }
+    }
+
+    .view-clients-link {
+        display: inline-block;
+        color: vars.$color-primary;
+        font-weight: bold;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-overview {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 600px) {
+    .dashboard-content {
+        padding: 24px 16px;
+    }
+
+    .dashboard-welcome {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dashboard-date-time-display {
+        text-align: left;
+    }
+
+    .dashboard-stats {
+        grid-template-columns: 1fr;
+    }
+}

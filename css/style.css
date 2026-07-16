@@ -271,4 +271,134 @@ input {
   background-color: #1e3766;
 }
 
+.dashboard-content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.dashboard-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+.dashboard-welcome h1 {
+  margin: 0;
+  color: #1e3766;
+  font-size: 28px;
+}
+.dashboard-welcome .dashboard-date-time-display {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  color: #6b7280;
+  text-align: right;
+}
+
+.dashboard-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+.dashboard-stats .stat-card {
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #b8b8b8;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(30, 55, 102, 0.08);
+}
+.dashboard-stats .stat-card h2 {
+  margin: 0 0 12px;
+  color: #6b7280;
+  font-size: 15px;
+  font-weight: bold;
+}
+.dashboard-stats .stat-card p {
+  margin: 0;
+  color: #1e3766;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.dashboard-overview {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+.dashboard-overview .pipeline-card, .dashboard-overview .recent-clients-card {
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #b8b8b8;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(30, 55, 102, 0.08);
+}
+.dashboard-overview .pipeline-card h2, .dashboard-overview .recent-clients-card h2 {
+  margin: 0 0 20px;
+  color: #1e3766;
+  font-size: 20px;
+}
+.dashboard-overview .pipeline-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+.dashboard-overview .pipeline-stats p {
+  margin: 0;
+  padding: 12px;
+  color: #6b7280;
+  background-color: #e2dede;
+  border-radius: 8px;
+}
+.dashboard-overview .pipeline-stats span {
+  color: #1e3766;
+  font-weight: bold;
+}
+.dashboard-overview #recent-client-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.dashboard-overview #recent-client-list p {
+  margin: 0;
+  color: #6b7280;
+}
+.dashboard-overview .view-clients-link {
+  display: inline-block;
+  color: #1e3766;
+  font-weight: bold;
+  text-decoration: none;
+}
+.dashboard-overview .view-clients-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .dashboard-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .dashboard-overview {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 600px) {
+  .dashboard-content {
+    padding: 24px 16px;
+  }
+  .dashboard-welcome {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .dashboard-date-time-display {
+    text-align: left;
+  }
+  .dashboard-stats {
+    grid-template-columns: 1fr;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */
