@@ -1,6 +1,8 @@
 const USERS_KEY = "crm_users";
 const SESSION_KEY = "crm_session";
 const THEME_KEY = "crm_theme";
+const CLIENTS_KEY = "crm_clients";
+const CLIENTS_INITIALIZED_KEY = "crm_clients_initialized";
 
 
 export function getUsers() {
@@ -31,4 +33,21 @@ export function getTheme() {
 
 export function saveTheme(theme) {
   localStorage.setItem(THEME_KEY, theme);
+}
+
+export function getClients() {
+  const clients = localStorage.getItem(CLIENTS_KEY);
+  return clients ? JSON.parse(clients) : [];
+}
+
+export function saveClients(clients) {
+  localStorage.setItem(CLIENTS_KEY, JSON.stringify(clients));
+}
+
+export function areClientsInitialized() {
+  return localStorage.getItem(CLIENTS_INITIALIZED_KEY) === "true";
+}
+
+export function markClientsInitialized() {
+  localStorage.setItem(CLIENTS_INITIALIZED_KEY, "true");
 }

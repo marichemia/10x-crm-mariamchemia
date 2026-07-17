@@ -1,5 +1,6 @@
 import {redirectIfNotAuthenticated} from './guard.js';
-import {clearSession, getUsers, getTheme, saveTheme} from './storage.js';
+import {clearSession, getUsers, getTheme, saveTheme, getClients} from './storage.js';
+import {initializeClients} from "./clientsData.js";
 
 const session = redirectIfNotAuthenticated();
 
@@ -50,3 +51,33 @@ document.getElementById('logout-button').addEventListener('click', () => {
     clearSession();
     window.location.href = './index.html';
 });
+
+//get clients list
+const clients = await initializeClients();
+
+//set client number
+const totalClientsElement = document.getElementById("total-clients");
+totalClientsElement.textContent = clients.length;
+
+//set active deals number
+const activeDeals = clients.filter(client => {
+    return client.status === "Lead" || client.status === "Contacted";
+})
+const activeDealsElement = document.getElementById("active-deals");
+activeDealsElement.textContent = activeDeals.length;
+
+//set won revenue value
+const wonRevenue = clients.filter(client => client.status === "Won").reduce((total, client) => {
+    return total + client.value;
+}, 0);
+const wonRevenueElement = document.getElementById("won-revenue");
+wonRevenueElement.textContent = `${wonRevenue.toLocaleString()}`;
+
+//set new this week value
+const pastWeek = Date.now() - 7 * 24 * 60 * 6 * 1000;
+const clientsThisWeek = clients.filter(client => {
+    const clientCreatedAt = new Date(client.createdAt).getTime();
+    return clientCreatedAt >= pastWeek;
+})
+const clientsThisWeekElement = document.getElementById("new-this-week");
+clientsThisWeekElement.textContent = clientsThisWeek.length;
