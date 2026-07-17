@@ -690,4 +690,55 @@ input {
   cursor: pointer;
 }
 
+@media (max-width: 950px) {
+  .clients-toolbar {
+    grid-template-columns: 1fr;
+  }
+  .status-filters {
+    flex-wrap: wrap;
+  }
+  .clients-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 650px) {
+  .clients-content {
+    padding: 24px 16px;
+  }
+  .clients-header {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .add-client-btn {
+    width: 100%;
+  }
+  .clients-list {
+    grid-template-columns: 1fr;
+  }
+}
+body.dark-theme .client-search, body.dark-theme .clients-sort, body.dark-theme .client-card, body.dark-theme .clients-error {
+  color: #f4f4f4;
+  background-color: #1f2937;
+  border-color: #374151;
+}
+body.dark-theme .client-card-detail {
+  color: #f4f4f4;
+}
+body.dark-theme .client-card-company, body.dark-theme .clients-message {
+  color: #b8bec9;
+}
+body.dark-theme .status-filter {
+  color: #d1d5db;
+  border-color: #4b5563;
+  background-color: #1f2937;
+}
+body.dark-theme .status-filter:hover {
+  color: #ffffff;
+  border-color: #ffffff;
+}
+body.dark-theme .client-card-status {
+  color: #f4f4f4;
+  background-color: #374151;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -168,3 +168,71 @@
     font-weight: bold;
     cursor: pointer;
 }
+
+//responsive styles for smaller screens
+@media (max-width: 950px) {
+    .clients-toolbar {
+        grid-template-columns: 1fr;
+    }
+
+    .status-filters {
+        flex-wrap: wrap;
+    }
+
+    .clients-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 650px) {
+    .clients-content {
+        padding: 24px 16px;
+    }
+
+    .clients-header {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .add-client-btn {
+        width: 100%;
+    }
+
+    .clients-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+//styles for dark theme
+body.dark-theme {
+    .client-search, .clients-sort, .client-card, .clients-error {
+        color: #f4f4f4;
+        background-color: #1f2937;
+        border-color: #374151;
+    }
+
+    .client-card-detail {
+        color: #f4f4f4;
+    }
+
+    .client-card-company, .clients-message {
+        color: #b8bec9;
+    }
+
+    .status-filter {
+        color: #d1d5db;
+        border-color: #4b5563;
+        background-color: #1f2937;
+
+        &:hover {
+            color: vars.$color-surface;
+            border-color: vars.$color-surface;
+        }
+    }
+
+    .client-card-status {
+        color: #f4f4f4;
+        background-color: #374151;
+    }
+
+}
