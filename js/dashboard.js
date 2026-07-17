@@ -1,8 +1,6 @@
-import {redirectIfNotAuthenticated} from './guard.js';
 import {clearSession, getUsers, getTheme, saveTheme, getClients} from './storage.js';
 import {initializeClients} from "./clientsData.js";
-
-const session = redirectIfNotAuthenticated();
+import { session } from './shared.js';
 
 //display current user name
 if (session) {
@@ -29,28 +27,6 @@ function displayDateTime() {
 
 displayDateTime();
 setInterval(displayDateTime, 1000); 
-
-//toggle between light and dark themes
-const toggleBtn = document.getElementById("theme-toggle");
-const savedTheme = getTheme();
-
-if (savedTheme === "dark") {
-    document.body.classList.add("dark-theme");
-    toggleBtn.classList.add("active");
-}
-
-toggleBtn.addEventListener("click", () => {
-    const isDark = document.body.classList.toggle("dark-theme");
-
-    toggleBtn.classList.toggle("active", isDark);
-    saveTheme(isDark ? "dark" : "light");
-})
-
-//logout and clear session
-document.getElementById('logout-button').addEventListener('click', () => {
-    clearSession();
-    window.location.href = './index.html';
-});
 
 //get clients list
 const clients = await initializeClients();
