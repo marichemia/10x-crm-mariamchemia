@@ -740,5 +740,11 @@ body.dark-theme .client-card-status {
   color: #f4f4f4;
   background-color: #374151;
 }
+body.dark-theme .clients-header h1 {
+  color: #f4f4f4;
+}
+body.dark-theme .client-card-name, body.dark-theme .client-card-value {
+  color: #56739f;
+}
 
 /*# sourceMappingURL=style.css.map */
