@@ -431,6 +431,38 @@ input {
   text-decoration: underline;
 }
 
+#recent-clients-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+#recent-clients-list .recent-client-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background-color: #e2dede;
+  border-radius: 8px;
+}
+#recent-clients-list .recent-client-name {
+  color: #6b7280;
+  font-size: 14px;
+}
+#recent-clients-list .recent-client-company {
+  color: #6b7280;
+  font-size: 14px;
+}
+#recent-clients-list .recent-client-status {
+  padding: 4px 8px;
+  color: #1e3766;
+  background-color: #ffffff;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
 .app-page.dark-theme .dashboard-welcome h1 {
   color: #f3f4f6;
 }
@@ -463,6 +495,20 @@ input {
 .app-page.dark-theme .view-clients-link {
   color: #f3f4f6;
 }
+.app-page.dark-theme #recent-clients-list .recent-client-item {
+  background-color: #111827;
+  border-color: #374151;
+}
+.app-page.dark-theme #recent-clients-list .recent-client-name {
+  color: #f3f4f6;
+}
+.app-page.dark-theme #recent-clients-list .recent-client-company {
+  color: #cbd5e1;
+}
+.app-page.dark-theme #recent-clients-list .recent-client-status {
+  color: #f3f4f6;
+  background-color: #1f2937;
+}
 
 @media (max-width: 900px) {
   .dashboard-stats {
@@ -485,6 +531,13 @@ input {
   }
   .dashboard-stats {
     grid-template-columns: 1fr;
+  }
+  .recent-client-item {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+  .recent-client-status {
+    justify-self: start;
   }
 }
 

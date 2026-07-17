@@ -124,6 +124,42 @@
     }
 }
 
+#recent-clients-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+
+    .recent-client-item {
+        display: grid;
+        grid-template-columns: 1fr 1fr auto;
+        align-items: center;
+        gap: 12px;
+        padding: 12px;
+        background-color: vars.$color-bg;
+        border-radius: 8px;
+    }
+
+    .recent-client-name {
+        color: vars.$color-text-secondary;
+        font-size: 14px;
+    }
+
+    .recent-client-company {
+        color: vars.$color-text-secondary;
+        font-size: 14px;
+    }
+
+    .recent-client-status {
+        padding: 4px 8px;
+        color: vars.$color-primary;
+        background-color: vars.$color-surface;
+        border-radius: 999px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
 //dark theme colors
 
 .app-page.dark-theme {
@@ -176,7 +212,29 @@
     .view-clients-link {
         color: vars.$color-dark-text;
     }
+
+    #recent-clients-list {
+        .recent-client-item {
+            background-color: vars.$color-dark-bg;
+            border-color: vars.$color-dark-border;
+        }
+
+        .recent-client-name {
+            color: vars.$color-dark-text;
+        }
+
+        .recent-client-company {
+            color: vars.$color-dark-text-secondary;
+        }
+
+        .recent-client-status {
+            color: vars.$color-dark-text;
+            background-color: vars.$color-dark-surface;
+        }
+    }
 }
+
+//styles for smaller resolutions
 
 @media (max-width: 900px) {
     .dashboard-stats {
@@ -204,5 +262,14 @@
 
     .dashboard-stats {
         grid-template-columns: 1fr;
+    }
+
+    .recent-client-item {
+        grid-template-columns: 1fr;
+        gap: 6px;
+    }
+
+    .recent-client-status {
+        justify-self: start;
     }
 }

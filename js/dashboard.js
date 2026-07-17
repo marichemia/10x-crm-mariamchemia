@@ -81,3 +81,49 @@ const clientsThisWeek = clients.filter(client => {
 })
 const clientsThisWeekElement = document.getElementById("new-this-week");
 clientsThisWeekElement.textContent = clientsThisWeek.length;
+
+//set pipeline overview card values
+const leadCount = clients.filter(client => client.status === "Lead");
+const contactedCount = clients.filter(client => client.status === "Contacted");
+const wonCount = clients.filter(client => client.status === "Won");
+const lostCount = clients.filter(client => client.status === "Lost");
+
+
+const leadElement = document.getElementById("lead-count");
+const contactedElement = document.getElementById("contacted-count");
+const wonEelement = document.getElementById("won-count");
+const lostElement = document.getElementById("lost-count");
+
+leadElement.textContent = leadCount.length;
+contactedElement.textContent = contactedCount.length;
+wonEelement.textContent = wonCount.length;
+lostElement.textContent = lostCount.length;
+
+//set recent client list
+const recentClientsElement = document.getElementById("recent-clients-list");
+const recentClients = [...clients].sort((firstClient, secondClient) => {
+    return new Date(secondClient.createdAt) - new Date(firstClient.createdAt);
+}).slice(0, 5);
+
+recentClientsElement.innerHTML = "";
+recentClients.forEach(client => {
+    const clientItemElement = document.createElement("div");
+    clientItemElement.classList.add("recent-client-item");
+
+    const clientName = document.createElement("div");
+    clientName.textContent = client.fullName;
+    clientName.classList.add("recent-client-name");
+
+    const clientCompany = document.createElement("span");
+    clientCompany.textContent = client.company;
+    clientCompany.classList.add("recent-client-company");
+
+    const clientStatus = document.createElement("span");
+    clientStatus.textContent = client.status;
+    clientStatus.classList.add("recent-client-status");
+
+    clientItemElement.append(clientName, clientCompany, clientStatus);
+    recentClientsElement.append(clientItemElement);
+})
+
+
