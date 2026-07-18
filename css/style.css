@@ -720,6 +720,39 @@ input {
   font-weight: bold;
 }
 
+.client-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.edit-client-btn, .delete-client-btn {
+  flex: 1;
+  padding: 8px 12px;
+  background-color: transparent;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.edit-client-btn {
+  color: #1e3766;
+  border: 1px solid #1e3766;
+}
+.edit-client-btn:hover {
+  color: #ffffff;
+  background-color: #1e3766;
+}
+
+.delete-client-btn {
+  color: #c0392b;
+  border: 1px solid #c0392b;
+}
+.delete-client-btn:hover {
+  color: #ffffff;
+  background-color: #c0392b;
+}
+
 @media (max-width: 950px) {
   .clients-toolbar {
     grid-template-columns: 1fr;
@@ -775,6 +808,24 @@ body.dark-theme .clients-header h1 {
 }
 body.dark-theme .client-card-name, body.dark-theme .client-card-value {
   color: #56739f;
+}
+body.dark-theme .edit-client-btn {
+  color: #60a5fa;
+  border-color: #60a5fa;
+}
+body.dark-theme .edit-client-btn:hover {
+  color: #111827;
+  background-color: #60a5fa;
+  border-color: #60a5fa;
+}
+body.dark-theme .delete-client-btn {
+  color: #f87171;
+  border-color: #f87171;
+}
+body.dark-theme .delete-client-btn:hover {
+  color: #111827;
+  background-color: #f87171;
+  border-color: #f87171;
 }
 
 /*# sourceMappingURL=style.css.map */

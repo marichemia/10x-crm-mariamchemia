@@ -66,7 +66,25 @@ function renderClients(clientArr) {
         clientStatusElement.classList.add("client-card-status");
         clientStatusElement.textContent = client.status;
 
-        clientCardElement.append(clientNameElement, clientCompanyElement, clientEmailElement, clientPhoneElement, clientValueElement, clientStatusElement);
+        //edit and delete buttons
+        const clientActionsElement = document.createElement("div");
+        clientActionsElement.classList.add("client-card-actions");
+
+        const editClientBtnEelement = document.createElement("button");
+        editClientBtnEelement.type = "button";
+        editClientBtnEelement.classList.add("edit-client-btn");
+        editClientBtnEelement.dataset.clientId = client.id;
+        editClientBtnEelement.textContent = "Edit";
+
+        const deleteClientBtnElement = document.createElement("button");
+        deleteClientBtnElement.type = "button";
+        deleteClientBtnElement.classList.add("delete-client-btn");
+        deleteClientBtnElement.dataset.clientId = client.id;
+        deleteClientBtnElement.textContent = "Delete";
+
+        clientActionsElement.append(editClientBtnEelement, deleteClientBtnElement);
+
+        clientCardElement.append(clientNameElement, clientCompanyElement, clientEmailElement, clientPhoneElement, clientValueElement, clientStatusElement, clientActionsElement);
 
         clientsListElement.append(clientCardElement);
 
@@ -122,7 +140,7 @@ function updateClientList() {
     const startIndex = (currentPg - 1) * clientsPerPg;
     const endIndex = startIndex + clientsPerPg;
     const currentPgClients = filteredClients.slice(startIndex, endIndex);
-
+    //display
     renderClients(currentPgClients);
     pgInfoElement.textContent = `Page ${currentPg} of ${totalPgs}`;
 
