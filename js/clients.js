@@ -78,9 +78,11 @@ loadClients();
 //search and filter
 const searchElement = document.getElementById("client-search");
 const filterBtnElements = document.querySelectorAll(".status-filter");
+const sortElement = document.getElementById("clients-sort");
+
 let activeStatus = "All"; 
 
-//create filtered array
+//create filtered array and display with renderClienlts()
 function updateClientList() {
     const searchTerm = searchElement.value.trim().toLowerCase();
 
@@ -91,13 +93,24 @@ function updateClientList() {
         return matchSearch && matchStatus;
     })
 
+    if (sortElement.value === "newest") {
+        filteredClients.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+    } 
+    
+    if (sortElement.value === "name") {
+        filteredClients.sort((a, b) => a.fullName.localeCompare(b.fullName));
+    } 
+    
+    if (sortElement.value === "value") {
+        filteredClients.sort((a, b) => b.value - a.value);
+    }
+
     renderClients(filteredClients);
 }
 
-//add event listener to search input element
+//add event listeners to search input element, filter buttons and sort dropdown
 searchElement.addEventListener("input", updateClientList);
 
-//add event listener to all filter buttons
 filterBtnElements.forEach(button => {
     button.addEventListener("click", () => {
         activeStatus = button.dataset.status;
@@ -109,5 +122,8 @@ filterBtnElements.forEach(button => {
         updateClientList();
     })
 })
+
+sortElement.addEventListener("change", updateClientList);
+
 
 
