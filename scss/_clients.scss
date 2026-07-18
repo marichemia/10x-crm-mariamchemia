@@ -169,6 +169,38 @@
     cursor: pointer;
 }
 
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-top: 32px;
+}
+
+.pagination-btn {
+    padding: 9px 14px;
+    color: vars.$color-surface;
+    background-color: vars.$color-primary;
+    border: none;
+    border-radius: 8px;
+    font-weight: 8px;
+    cursor: pointer;
+
+    &:hover:not(:disabled) {
+        background-color: darken(vars.$color-primary, 10%);
+    }
+
+    &:disabled {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+}
+
+#pg-info {
+    color: vars.$color-text-secondary;
+    font-weight: bold;
+}
+
 //responsive styles for smaller screens
 @media (max-width: 950px) {
     .clients-toolbar {

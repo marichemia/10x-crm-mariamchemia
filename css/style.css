@@ -690,6 +690,36 @@ input {
   cursor: pointer;
 }
 
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.pagination-btn {
+  padding: 9px 14px;
+  color: #ffffff;
+  background-color: #1e3766;
+  border: none;
+  border-radius: 8px;
+  font-weight: 8px;
+  cursor: pointer;
+}
+.pagination-btn:hover:not(:disabled) {
+  background-color: rgb(18.4090909091, 33.75, 62.5909090909);
+}
+.pagination-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+#pg-info {
+  color: #6b7280;
+  font-weight: bold;
+}
+
 @media (max-width: 950px) {
   .clients-toolbar {
     grid-template-columns: 1fr;
