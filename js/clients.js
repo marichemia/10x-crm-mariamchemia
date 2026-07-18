@@ -16,7 +16,7 @@ async function loadClients() {
         clients = await initializeClients();
         loadingMessageElement.hidden = true;
         console.log(clients); //testing
-        renderClients(clients);
+        updateClientList();
     } catch (e) {
         loadingMessageElement.hidden = true;
         errorMessageElement.hidden = false;
@@ -75,18 +75,39 @@ function renderClients(clientArr) {
 
 loadClients();
 
-//search 
+//search and filter
 const searchElement = document.getElementById("client-search");
+const filterBtnElements = document.querySelectorAll(".status-filter");
+let activeStatus = "All"; 
 
-searchElement.addEventListener("input", () => {
+//create filtered array
+function updateClientList() {
     const searchTerm = searchElement.value.trim().toLowerCase();
 
-    const filteredClients = clients.filter(client => {
-        const name = client.fullName.toLowerCase();
-        const company = client.company.toLowerCase();
+    const filteredClients = clients.filter (client => {
+        const matchSearch = client.fullName.toLowerCase().includes(searchTerm) || client.company.toLowerCase().includes(searchTerm);
+        const matchStatus = activeStatus === "All" || client.status === activeStatus;
 
-        return (name.includes(searchTerm) || company.includes(searchTerm));
+        return matchSearch && matchStatus;
     })
 
     renderClients(filteredClients);
+}
+
+//add event listener to search input element
+searchElement.addEventListener("input", updateClientList);
+
+//add event listener to all filter buttons
+filterBtnElements.forEach(button => {
+    button.addEventListener("click", () => {
+        activeStatus = button.dataset.status;
+        filterBtnElements.forEach (btn => {
+            btn.classList.remove("active");
+        });
+
+        button.classList.add("active");
+        updateClientList();
+    })
 })
+
+
