@@ -75,24 +75,32 @@ function renderClients(clientArr) {
 
 loadClients();
 
-//search and filter
+//search and filter variable
 const searchElement = document.getElementById("client-search");
 const filterBtnElements = document.querySelectorAll(".status-filter");
 const sortElement = document.getElementById("clients-sort");
 
 let activeStatus = "All"; 
 
+//pagination variables
+const prevPgBtnElement = document.getElementById("prev-pg-btn");
+const nextPgBtnElement = document.getElementById("next-pg-btn");
+const pgInfoElement = document.getElementById("pg-info");
+
+let currentPg = 1;
+const clientsPerPg = 9;
+
 //create filtered array and display with renderClienlts()
 function updateClientList() {
     const searchTerm = searchElement.value.trim().toLowerCase();
-
+    //filter and search
     const filteredClients = clients.filter (client => {
         const matchSearch = client.fullName.toLowerCase().includes(searchTerm) || client.company.toLowerCase().includes(searchTerm);
         const matchStatus = activeStatus === "All" || client.status === activeStatus;
 
         return matchSearch && matchStatus;
     })
-
+    //sort
     if (sortElement.value === "newest") {
         filteredClients.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
     } 
@@ -104,11 +112,25 @@ function updateClientList() {
     if (sortElement.value === "value") {
         filteredClients.sort((a, b) => b.value - a.value);
     }
+    //pagination
+    const totalPgs = Math.max(1, Math.ceil(filteredClients.length / clientsPerPg));
 
-    renderClients(filteredClients);
+    if(currentPg > totalPgs) {
+        currentPg = totalPgs;
+    }
+
+    const startIndex = (currentPg - 1) * clientsPerPg;
+    const endIndex = startIndex + clientsPerPg;
+    const currentPgClients = filteredClients.slice(startIndex, endIndex);
+
+    renderClients(currentPgClients);
+    pgInfoElement.textContent = `Page ${currentPg} of ${totalPgs}`;
+
+    prevPgBtnElement.disabled = currentPg === 1;
+    nextPgBtnElement.disabled = currentPg === totalPgs;
 }
 
-//add event listeners to search input element, filter buttons and sort dropdown
+//add event listeners to search input element, filter buttons, sort dropdown and pagination buttons
 searchElement.addEventListener("input", updateClientList);
 
 filterBtnElements.forEach(button => {
@@ -124,6 +146,22 @@ filterBtnElements.forEach(button => {
 })
 
 sortElement.addEventListener("change", updateClientList);
+
+prevPgBtnElement.addEventListener("click", () => {
+    if (currentPg > 1) {
+        currentPg--;
+        updateClientList();
+    }
+})
+
+nextPgBtnElement.addEventListener("click", () => {
+    currentPg++;
+    updateClientList();
+})
+
+
+
+
 
 
 
