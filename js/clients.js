@@ -73,6 +73,20 @@ function renderClients(clientArr) {
     })
 }
 
-
-
 loadClients();
+
+//search 
+const searchElement = document.getElementById("client-search");
+
+searchElement.addEventListener("input", () => {
+    const searchTerm = searchElement.value.trim().toLowerCase();
+
+    const filteredClients = clients.filter(client => {
+        const name = client.fullName.toLowerCase();
+        const company = client.company.toLowerCase();
+
+        return (name.includes(searchTerm) || company.includes(searchTerm));
+    })
+
+    renderClients(filteredClients);
+})
