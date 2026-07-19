@@ -257,11 +257,11 @@ clientFormElement.addEventListener("submit", event => {
                 ...formData
             }
         }
-
-        saveClients(clients);
-        updateClientList();
-        closeModalWindow();
     }
+
+    saveClients(clients);
+    updateClientList();
+    closeModalWindow();
 })
 
 clientsListElement.addEventListener("click", event => {
