@@ -266,17 +266,41 @@ clientFormElement.addEventListener("submit", event => {
 
 clientsListElement.addEventListener("click", event => {
     const editButton = event.target.closest(".edit-client-btn");
+    const deleteButton = event.target.closest(".delete-client-btn");
+    //edit
+    if (editButton) {
+        const clientId = Number(editButton.dataset.clientId);
+        const clientToEdit = clients.find(client => client.id === clientId);
 
-    if(!editButton) {
+        if (clientToEdit) {
+            openAddClientModal(clientToEdit);
+        }
+
+        return;
+    }
+    //delete
+    if(!deleteButton) {
         return;
     }
 
-    const clientId = Number(editButton.dataset.clientId);
-    const clientToEdit = clients.find(client => client.id === clientId);
-
-    if (clientToEdit) {
-        openEditClientModal(clientToEdit);
+    const clientId = Number(deleteButton.dataset.clientId);
+    const clientToDelete = clients.find(client => client.id === clientId);
+    
+    if(!clientToDelete) {
+        return;
     }
+
+    const confirmed = window.confirm(`Delete ${clientToDelete.fullName}?`);
+
+    if (!confirmed) {
+        return;
+    }
+
+    clients = clients.filter(client => client.id !== clientId);
+
+    saveClients(clients);
+    updateClientList();
+
 
 })
 
