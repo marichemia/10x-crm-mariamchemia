@@ -57,6 +57,34 @@
             </div>
         </div>
     </main>
+    <div class="modal-window" id="modal-window" hidden>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Add Client</h2>
+                <button type="button" id="close-modal-btn" class="close-modal-btn" aria-label="Close Form Window">&times;</button>
+            </div>
+            <form id="client-form">
+                <label for="client-full-name"></label>
+                <input type="text" id="client-full-name" required>
+                <label for="client-email">Email</label>
+                <input type="email" id="client-email" required>
+                <label for="client-phone">Phone</label>
+                <input type="text" id="client-phone" required>
+                <label for="client-company">Company</label>
+                <input type="text" id="client-company">
+                <label for="client-status">Status</label>
+                <select id="client-status" required>
+                    <option value="Lead">Lead</option>
+                    <option value="Contacted">Contacted</option>
+                    <option value="Won">Won</option>
+                    <option value="Lost">Lost</option>
+                </select>
+                <label for="client-value">Deal Value</label>
+                <input type="number" id="client-value" min="0" required>
+                <button type="submit" class="save-btn">Save</button>
+            </form>
+        </div>
+    </div>
     <script type="module" src="./js/clients.js"></script>
 </body>
 </html>

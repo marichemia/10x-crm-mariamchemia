@@ -1,5 +1,6 @@
 import "./shared.js";
 import {initializeClients} from "./clientsData.js";
+import { saveClients } from "./storage.js";
 
 const loadingMessageElement = document.getElementById("clients-loading");
 const errorMessageElement = document.getElementById("clients-error");
@@ -175,6 +176,60 @@ prevPgBtnElement.addEventListener("click", () => {
 nextPgBtnElement.addEventListener("click", () => {
     currentPg++;
     updateClientList();
+})
+
+//open/close modal window
+const addClientBtnElement = document.getElementById("add-client-btn");
+const modalWindowElement = document.getElementById("modal-window");
+const modalWindowTitleElement = document.getElementById("modal-title");
+const closeModalBtnElement = document.getElementById("close-modal-btn");
+const clientFormElement = document.getElementById("client-form");
+
+let editingClientId = null;
+
+function openAddClientModal() {
+    editingClientId = null;
+    modalWindowTitleElement.textContent = "Add Client";
+    clientFormElement.reset();
+    modalWindowElement.hidden = false;
+}
+
+function closeModalWindow() {
+    modalWindowElement.hidden = true;
+}
+
+addClientBtnElement.addEventListener("click", openAddClientModal);
+closeModalBtnElement.addEventListener("click", closeModalWindow);
+
+//add client form input fields
+const clientNameInputElement = document.getElementById("client-full-name");
+const clientEmailInputElement = document.getElementById("client-email");
+const clientPhoneInputElement = document.getElementById("client-phone");
+const clientCompanyInputElement = document.getElementById("client-company");
+const clientStatusInputElement = document.getElementById("client-status");
+const clientValueInputElement = document.getElementById("client-value");
+
+
+clientFormElement.addEventListener("submit", event => {
+    console.log("submit works"); //testing
+    event.preventDefault();
+    const newClient = {
+        id: Date.now(),
+        fullName: clientNameInputElement.value.trim(),
+        email: clientEmailInputElement.value.trim(),
+        phone: clientPhoneInputElement.value.trim(),
+        company: clientCompanyInputElement.value.trim(),
+        status: clientStatusInputElement.value.trim(),
+        value: Number(clientValueInputElement.value),
+        createdAt: new Date().toDateString()
+    }
+
+    clients.push(newClient);
+    saveClients(clients);
+
+    currentPg = 1;
+    updateClientList();
+    closeModalWindow();
 })
 
 
