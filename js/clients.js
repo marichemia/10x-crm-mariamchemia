@@ -194,12 +194,28 @@ function openAddClientModal() {
     modalWindowElement.hidden = false;
 }
 
+function openEditClientModal(client) {
+    editingClientId = client.id;
+    modalWindowTitleElement.textContent = "Edit Client";
+
+    clientNameInputElement.value = client.fullName;
+    clientEmailInputElement.value = client.email;
+    clientPhoneInputElement.value = client.phone;
+    clientCompanyInputElement.value = client.company;
+    clientStatusInputElement.value = client.status;
+    clientValueInputElement.value = client.value;
+
+    modalWindowElement.hidden = false;
+}
+
 function closeModalWindow() {
     modalWindowElement.hidden = true;
+    editingClientId = null;
 }
 
 addClientBtnElement.addEventListener("click", openAddClientModal);
 closeModalBtnElement.addEventListener("click", closeModalWindow);
+
 
 //add client form input fields
 const clientNameInputElement = document.getElementById("client-full-name");
@@ -213,23 +229,55 @@ const clientValueInputElement = document.getElementById("client-value");
 clientFormElement.addEventListener("submit", event => {
     console.log("submit works"); //testing
     event.preventDefault();
-    const newClient = {
-        id: Date.now(),
+    //extract form data
+    const formData = {
         fullName: clientNameInputElement.value.trim(),
         email: clientEmailInputElement.value.trim(),
         phone: clientPhoneInputElement.value.trim(),
         company: clientCompanyInputElement.value.trim(),
         status: clientStatusInputElement.value.trim(),
         value: Number(clientValueInputElement.value),
-        createdAt: new Date().toDateString()
     }
 
-    clients.push(newClient);
-    saveClients(clients);
+    //check if the form is for editing or adding
+    if (editingClientId === null) {
+        const newClient = {
+            id: Date.now(),
+            ...formData, 
+            createdAt: new Date().toISOString()
+        }
 
-    currentPg = 1;
-    updateClientList();
-    closeModalWindow();
+        clients.push(newClient);
+        currentPg = 1;
+    } else {
+        const clientIndex = clients.findIndex(client => client.id === editingClientId);
+        if (clientIndex !== -1) {
+            clients[clientIndex] = {
+                ...clients[clientIndex],
+                ...formData
+            }
+        }
+
+        saveClients(clients);
+        updateClientList();
+        closeModalWindow();
+    }
+})
+
+clientsListElement.addEventListener("click", event => {
+    const editButton = event.target.closest(".edit-client-btn");
+
+    if(!editButton) {
+        return;
+    }
+
+    const clientId = Number(editButton.dataset.clientId);
+    const clientToEdit = clients.find(client => client.id === clientId);
+
+    if (clientToEdit) {
+        openEditClientModal(clientToEdit);
+    }
+
 })
 
 
