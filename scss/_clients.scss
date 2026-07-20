@@ -137,6 +137,27 @@
         border-radius: 999px;
         font-size: 12px;
         font-weight: bold;
+
+        &.status-lead {
+            color: #1d4ed8;
+            background-color: #dbeafe;
+
+        }
+
+        &.status-contacted {
+            color: #7e22ce;
+            background-color: #f3e8ff;
+        }
+
+        &.status-won {
+            color: #15803d;
+            background-color: #dcfce7;
+        }
+
+        &.status-lost {
+            color: #b91c1c;
+            background-color: #ffd5d5;
+        }
     }
     
 }
@@ -396,6 +417,26 @@ body.dark-theme {
     .client-card-status {
         color: #f4f4f4;
         background-color: #374151;
+
+        &.status-lead {
+            color: #bfdbfe;
+            background-color: #1e3a8a;
+        }
+
+        &.status-contacted {
+            color: #e9d5ff;
+            background-color: #581c87;
+        }
+
+        &.status-won {
+            color: #bbf7d0;
+            background-color: #14532d;
+        }
+
+        &.status-lost {
+            color: #fecaca;
+            background-color: #ed4646;
+        }
     }
 
     .clients-header {

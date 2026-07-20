@@ -64,7 +64,7 @@ function renderClients(clientArr) {
         clientValueElement.textContent = `$${client.value.toLocaleString()}`;
 
         const clientStatusElement = document.createElement("span");
-        clientStatusElement.classList.add("client-card-status");
+        clientStatusElement.classList.add("client-card-status", `status-${client.status.toLowerCase()}`);
         clientStatusElement.textContent = client.status;
 
         //edit and delete buttons
@@ -311,6 +311,10 @@ clientsListElement.addEventListener("click", event => {
 
 
 })
+
+//retry button
+const retryBtnElement = document.getElementById("retry-clients-button");
+retryBtnElement.addEventListener("click", loadClients);
 
 
 

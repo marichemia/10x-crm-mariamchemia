@@ -662,6 +662,22 @@ input {
   font-size: 12px;
   font-weight: bold;
 }
+.clients-results .client-card-status.status-lead {
+  color: #1d4ed8;
+  background-color: #dbeafe;
+}
+.clients-results .client-card-status.status-contacted {
+  color: #7e22ce;
+  background-color: #f3e8ff;
+}
+.clients-results .client-card-status.status-won {
+  color: #15803d;
+  background-color: #dcfce7;
+}
+.clients-results .client-card-status.status-lost {
+  color: #b91c1c;
+  background-color: #ffd5d5;
+}
 
 .client-message {
   margin: 40px 0;
@@ -889,6 +905,22 @@ body.dark-theme .status-filter:hover {
 body.dark-theme .client-card-status {
   color: #f4f4f4;
   background-color: #374151;
+}
+body.dark-theme .client-card-status.status-lead {
+  color: #bfdbfe;
+  background-color: #1e3a8a;
+}
+body.dark-theme .client-card-status.status-contacted {
+  color: #e9d5ff;
+  background-color: #581c87;
+}
+body.dark-theme .client-card-status.status-won {
+  color: #bbf7d0;
+  background-color: #14532d;
+}
+body.dark-theme .client-card-status.status-lost {
+  color: #fecaca;
+  background-color: #ed4646;
 }
 body.dark-theme .clients-header h1 {
   color: #f4f4f4;
