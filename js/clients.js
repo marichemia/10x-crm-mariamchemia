@@ -150,11 +150,16 @@ function updateClientList() {
 }
 
 //add event listeners to search input element, filter buttons, sort dropdown and pagination buttons
-searchElement.addEventListener("input", updateClientList);
+searchElement.addEventListener("input", () => {
+    currentPg = 1;
+    updateClientList();
+});
 
 filterBtnElements.forEach(button => {
     button.addEventListener("click", () => {
         activeStatus = button.dataset.status;
+        currentPg = 1;
+
         filterBtnElements.forEach (btn => {
             btn.classList.remove("active");
         });
@@ -164,7 +169,10 @@ filterBtnElements.forEach(button => {
     })
 })
 
-sortElement.addEventListener("change", updateClientList);
+sortElement.addEventListener("change", () => {
+    currentPg = 1;
+    updateClientList();
+});
 
 prevPgBtnElement.addEventListener("click", () => {
     if (currentPg > 1) {
@@ -289,7 +297,7 @@ clientsListElement.addEventListener("click", event => {
     if(!clientToDelete) {
         return;
     }
-
+    //confirm delete window
     const confirmed = window.confirm(`Delete ${clientToDelete.fullName}?`);
 
     if (!confirmed) {
