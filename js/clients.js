@@ -283,7 +283,7 @@ clientsListElement.addEventListener("click", event => {
         const clientToEdit = clients.find(client => client.id === clientId);
 
         if (clientToEdit) {
-            openAddClientModal(clientToEdit);
+            openEditClientModal(clientToEdit);
         }
 
         return;
