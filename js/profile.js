@@ -29,7 +29,7 @@ profileInfoElement.addEventListener("submit", event => {
     const updatedName = nameInputElement.value.trim();
     //return if the input field is empty
     if(!updatedName) {
-        profileInfoElement.textContent = "Name field is empty.";
+        showProfileMsg(profileInforMsgElement, "Name field is empty.", "error");
         return;
     }
 
@@ -37,7 +37,7 @@ profileInfoElement.addEventListener("submit", event => {
     saveUsers(users);
 
     nameInputElement.value = updatedName;
-    profileInforMsgElement.textContent = "Your changes have been saved.";
+    showProfileMsg(profileInforMsgElement, "Your changes have been saved.", "success");
 })
 
 //change password
