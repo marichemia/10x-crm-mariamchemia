@@ -55,7 +55,7 @@ function passwordValidation(password) {
     const includesLowerCase = password !== password.toUpperCase();
     const includesNumber = /\d/.test(password);
 
-    return minLength && includesUppercase && includesLowercase && includesNumber;
+    return (minLength && includesUpperCase && includesLowerCase && includesNumber);
 }
 
 passwordFormElement.addEventListener("submit", event => {
@@ -75,6 +75,7 @@ passwordFormElement.addEventListener("submit", event => {
 
     if(!passwordValidation(newPassword)){
         showProfileMsg(passwordMsgElement, "Password must contain at least 8 character, inclluding Uppercase, Lowercase and a Number.", "error");
+        return;
     }
 
     if(newPassword !== confirmedPassword) {
