@@ -92,3 +92,63 @@
     font-size: 14px;
 
 }
+
+.profile-message {
+    min-height: 20px;
+    margin: 4px 0 0 ;
+    font-size: 14px;
+
+    &.success {
+        color: #21b457;
+    }
+
+    &.error {
+        color: vars.$color-error;
+    }
+}
+
+//dark theme styles
+body.dark-theme {
+    .profile-card {
+        background-color: #1f2937;
+        border-color: #374151;
+
+        h2 {
+            color: #93c5fd;
+        }
+
+        label {
+            color: #f4f4f4;
+        }
+
+        input {
+            color: #f4f4f4;
+            background-color: #111827;
+        }
+
+        .profile-message {
+            color: #d1d5db;
+
+            &.success {
+                color: #41de80;
+            }
+
+            &.error {
+                color: #eb4b4b;
+            }
+        }
+    }
+
+  
+}
+
+//responsive styles
+@media (max-width: 750px) {
+    .profile-content {
+        padding: 24px 16px;
+    }
+
+    .profile-sections {
+        grid-template-columns: 1fr;
+    }
+}
