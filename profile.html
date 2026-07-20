@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10x CRM - Profile</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body class="app-page">
+    <header class="header">
+        <a href="./dashboard.html" class="logo">10x CRM</a>
+        <nav>
+            <a href="./dashboard.html" class="nav-link">Dashboard</a>
+            <a href="./clients.html" class="nav-link">Clients</a>
+            <a href="./profile.html" class="nav-link active">Profile</a>
+        </nav>
+        <div class="app-actions">
+            <button type="button" id="theme-toggle" class="theme-toggle" aria-label="Switch Theme">
+                <span class="toggle-icon"></span>
+            </button>
+            <button type="button" id="logout-button" class="logout-button">Logout</button>
+        </div>
+    </header>
+    <main class="profile-content">
+        <section class="profile-header">
+            <h1>Profile</h1>
+        </section>
+        <section class="profile-sections">
+            <div class="profile-card">
+                <h2>Personal Information</h2>
+                <form id="profile-info-form">
+                    <label for="profile-full-name"> Full Name </label>
+                    <input type="text" id="profile-full-name" required>
+
+                    <label for="profile-email">Email</label>
+                    <input type="text" id="profile-email" disabled>
+
+                    <button type="submit" class="profile-save-btn"> Save Changes </button>
+                </form>
+            </div>
+            <div class="profile-card">
+                <h2>Change Password</h2>
+                <form id="password-form">
+                    <label for="current-password">Current Password</label>
+                    <input type="password" id="current-password" required>
+
+                    <label for="new-password">New Password</label>
+                    <input type="password" id="new-password" required>
+
+                    <label for="confirm-new-password">Confirm New Password</label>
+                    <input type="password" id="confirm-new-password" required>
+
+                    <p id="password-message" class="profile-message"></p>
+                    <button type="submit" class="profile-save-btn"></button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <script type="module" src="./js/profile.js"></script>
+</body>
+</html>
