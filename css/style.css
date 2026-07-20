@@ -989,4 +989,87 @@ body.dark-theme #client-form input:focus, body.dark-theme #client-form select:fo
   box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
 }
 
+.profile-content {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 32px;
+}
+
+.profile.header {
+  margin-bottom: 24px;
+}
+.profile.header h1 {
+  margin: 0;
+  color: #1e3766;
+  font-size: 28px;
+}
+
+.profile-sections {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.profile-card {
+  padding: 24px;
+  background-color: #ffffff;
+  border: 1px solid #b8b8b8;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(30, 55, 102, 0.08);
+}
+.profile-card h2 {
+  margin: 0 0 20px;
+  color: #1e3766;
+  font-size: 20px;
+}
+.profile-card form {
+  display: grid;
+  gap: 10px;
+}
+.profile-card label {
+  margin-top: 4px;
+  color: #1f2937;
+  font-weight: bold;
+}
+.profile-card input {
+  width: 100%;
+  padding: 10px 12px;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  font: inherit;
+  outline: none;
+}
+.profile-card input:focus {
+  border-radius: #1e3766;
+  box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.15);
+}
+.profile-card input:disabled {
+  color: #6b7280;
+  background-color: #e2dede;
+  cursor: not-allowed;
+}
+
+.profile-save-btn {
+  margin-top: 14px;
+  padding: 11px 16px;
+  color: #ffffff;
+  background-color: #1e3766;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.profile-save-btn:hover {
+  background-color: rgb(18.4090909091, 33.75, 62.5909090909);
+}
+
+.profile-message {
+  min-height: 20px;
+  margin: 4px 0 0;
+  font-size: 14px;
+}
+
 /*# sourceMappingURL=style.css.map */

@@ -1,0 +1,94 @@
+@use "variables" as vars;
+
+.profile-content {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 32px;
+}
+
+.profile.header {
+    margin-bottom: 24px;
+
+    h1 {
+        margin: 0;
+        color: vars.$color-primary;
+        font-size: vars.$font-size-welcome;
+    }
+}
+
+.profile-sections {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+}
+
+.profile-card {
+    padding: 24px;
+    background-color: vars.$color-surface;
+    border: 1px solid vars.$color-border;
+    border-radius: 12px;
+    box-shadow: 0 4px 14px rgba(30, 55, 102, 0.08);
+
+    h2 {
+        margin: 0 0 20px;
+        color: vars.$color-primary;
+        font-size: 20px;
+    }
+
+    form {
+        display: grid;
+        gap: 10px;
+    }
+
+    label {
+        margin-top: 4px;
+        color: vars.$color-text;
+        font-weight: bold;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px 12px;
+        color: vars.$color-text;
+        background-color: vars.$color-surface;
+        border: 1px solid vars.$color-border;
+        border-radius: 8px;
+        font: inherit;
+        outline: none;
+
+        &:focus {
+            border-radius: vars.$color-primary;
+            box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.15);
+        }
+
+        &:disabled {
+            color: vars.$color-text-secondary;
+            background-color: vars.$color-bg;
+            cursor: not-allowed;
+        }
+    }
+
+}
+
+.profile-save-btn {
+    margin-top: 14px;
+    padding: 11px 16px;
+    color: vars.$color-surface;
+    background-color: vars.$color-primary;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken(vars.$color-primary, 10%);
+    }
+}
+
+.profile-message {
+    min-height: 20px;
+    margin: 4px 0 0;
+    font-size: 14px;
+
+}
