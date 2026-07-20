@@ -270,6 +270,8 @@ clientFormElement.addEventListener("submit", event => {
     saveClients(clients);
     updateClientList();
     closeModalWindow();
+
+    showToast("Your changes have been saved.");
 })
 
 clientsListElement.addEventListener("click", event => {
@@ -308,13 +310,28 @@ clientsListElement.addEventListener("click", event => {
 
     saveClients(clients);
     updateClientList();
-
+    showToast("Your changes have been saved.");
 
 })
 
 //retry button
 const retryBtnElement = document.getElementById("retry-clients-button");
 retryBtnElement.addEventListener("click", loadClients);
+
+//toast
+const toastElement = document.getElementById("client-toast");
+let toastTimeout;
+
+function showToast(message) {
+    clearTimeout(toastTimeout);
+    toastElement.textContent = message;
+    toastElement.hidden = false;
+
+    toastTimeout = setTimeout(() => {
+        toastElement.hidden = true;
+    }, 2500);
+}
+
 
 
 
