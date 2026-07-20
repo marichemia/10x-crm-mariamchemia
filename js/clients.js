@@ -221,6 +221,18 @@ function closeModalWindow() {
     editingClientId = null;
 }
 
+modalWindowElement.addEventListener("click", event => {
+    if (event.target === modalWindowElement) {
+        closeModalWindow();
+    }
+})
+
+document.addEventListener("keydown", event => {
+    if (event.key === "Escape" && !modalWindowElement.hidden) {
+        closeModalWindow();
+    }
+})
+
 addClientBtnElement.addEventListener("click", openAddClientModal);
 closeModalBtnElement.addEventListener("click", closeModalWindow);
 
