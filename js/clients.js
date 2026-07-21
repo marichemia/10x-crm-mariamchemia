@@ -319,6 +319,12 @@ const clientDetailsCompanyElement = document.getElementById("client-details-comp
 const clientDetailsStatusElement = document.getElementById("client-details-status");
 const clientDetailsValueElement = document.getElementById("client-details-value");
 const clientDetailsCreatedAtElement = document.getElementById("client-details-created-at");
+const clientNoteFormElement = document.getElementById("client-note-form");
+const clientNoteInputElement = document.getElementById("client-note-input");
+
+let activeDetailsClientId = null;
+const clientNotesEmptyElement = document.getElementById("client-notes-empty");
+const clientNotesListElement = document.getElementById("client-notes-list");
 
 
 clientFormElement.addEventListener("submit", event => {
@@ -365,7 +371,7 @@ clientFormElement.addEventListener("submit", event => {
 clientsListElement.addEventListener("click", event => {
     const editButton = event.target.closest(".edit-client-btn");
     const deleteButton = event.target.closest(".delete-client-btn");
-    //edit
+    //edit 
     if (editButton) {
         const clientId = Number(editButton.dataset.clientId);
         const clientToEdit = clients.find(client => client.id === clientId);
@@ -402,14 +408,15 @@ clientsListElement.addEventListener("click", event => {
         return;
     }
 
+    //client details window 
     const clickedCard = event.target.closest(".client-card");
 
     if(!clickedCard) {
         return;
     }
 
-    const selectedClientId = Number(clickedCard.dataset.clientId);
-    const selectedClient = clients.find(client => client.id === selectedClientId);
+    activeDetailsClientId = Number(clickedCard.dataset.clientId);
+    const selectedClient = clients.find(client => client.id === activeDetailsClientId);
 
     if (!selectedClient) {
         return;
@@ -422,8 +429,40 @@ clientsListElement.addEventListener("click", event => {
     clientDetailsStatusElement.textContent = selectedClient.status;
     clientDetailsValueElement.textContent = `$${selectedClient.value.toLocaleString()}`;
     clientDetailsCreatedAtElement.textContent = new Date(selectedClient.createdAt).toLocaleDateString();
-    
+    displayClientNotes(selectedClient);
+
     clientDetailsModalElement.hidden = false;
+})
+
+//submit note form
+clientNoteFormElement.addEventListener("submit", event => {
+    event.preventDefault();
+
+    const noteText = clientNoteInputElement.value.trim();
+    if (!noteText || activeDetailsClientId === null) {
+        return;
+    }
+    const activeClient = clients.find(client => client.id === activeDetailsClientId);
+    if (!activeClient) {
+        return;
+    }
+    if (!activeClient.notes) {
+        activeClient.notes = [];
+    }
+
+    const newNote = {
+        id: Date.now(),
+        text: noteText, 
+        createdAt: new Date().toISOString()
+    }
+
+    activeClient.notes.unshift(newNote);
+    saveClients(clients);
+    displayClientNotes(activeClient);
+    clientNoteFormElement.reset();
+
+    showToast("Note added successfully.");
+
 })
 
 //retry button
@@ -442,6 +481,25 @@ function showToast(message) {
     toastTimeout = setTimeout(() => {
         toastElement.hidden = true;
     }, 2500);
+}
+
+//display notes
+function displayClientNotes(client) {
+    const notes = client.notes || [];
+    clientNotesListElement.innerHTML = "";
+    clientNotesEmptyElement.hidden = notes.length > 0;
+    notes.forEach(note => {
+        const noteItemElement = document.createElement("li");
+        noteItemElement.classList.add("client-note-item");
+        const noteTextElement = document.createElement("p");
+        noteTextElement.textContent = note.text;
+        const noteDateElement = document.createElement("time");
+        noteDateElement.dateTime = note.createdAt;
+        noteDateElement.textContent = new Date (note.createdAt).toLocaleDateString();
+
+        noteItemElement.append(noteTextElement, noteDateElement);
+        clientNotesListElement.append(noteItemElement);
+    })
 }
 
 
