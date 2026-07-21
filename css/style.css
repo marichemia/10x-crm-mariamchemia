@@ -964,6 +964,23 @@ input {
   background-color: rgb(18.4090909091, 33.75, 62.5909090909);
 }
 
+.client-note-item {
+  padding: 12px;
+  background-color: rgba(30, 55, 102, 0.06);
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+}
+.client-note-item p {
+  margin: 0 0 8px;
+  color: #1f2937;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+.client-note-item time {
+  color: #6b7280;
+  font-size: 12px;
+}
+
 .client-toast {
   position: fixed;
   right: 24px;
@@ -1126,6 +1143,16 @@ body.dark-theme .client-note-form textarea {
 body.dark-theme .client-note-form textarea:focus {
   border-color: #3d91f8;
   box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
+}
+body.dark-theme .client-note-item {
+  background-color: #111827;
+  border-color: #374151;
+}
+body.dark-theme .client-note-item p {
+  color: #f4f4f4;
+}
+body.dark-theme .client-note-item time {
+  color: #b8bec9;
 }
 
 .profile-content {

@@ -473,6 +473,25 @@
     }
 }
 
+.client-note-item {
+    padding: 12px;
+    background-color: rgba(30, 55, 102, 0.06);
+    border: 1px solid vars.$color-border;
+    border-radius: 8px;
+
+    p {
+        margin: 0 0 8px;
+        color: vars.$color-text;
+        line-height: 1.5;
+        overflow-wrap: anywhere;
+    }
+
+    time {
+        color: vars.$color-text-secondary;
+        font-size: 12px;
+    }
+}
+
 //toast notification
 
 .client-toast {
@@ -690,5 +709,18 @@ body.dark-theme {
             }
         }
     }
+
+    .client-note-item {
+    background-color: #111827;
+    border-color: #374151;
+
+    p {
+        color: #f4f4f4;
+    }
+
+    time {
+        color: #b8bec9;
+    }
+}
 
 }
