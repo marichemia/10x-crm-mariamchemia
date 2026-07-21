@@ -878,6 +878,30 @@ input {
   background-color: rgb(18.4090909091, 33.75, 62.5909090909);
 }
 
+.client-details-window {
+  max-width: 560px;
+}
+
+.client-details-content {
+  display: grid;
+  gap: 4px;
+}
+.client-details-content p {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 12px;
+  margin: 0;
+  padding: 12px 0;
+  color: #1f2937;
+  border-bottom: 1px solid #b8b8b8;
+}
+.client-details-content p:last-child {
+  border-bottom: none;
+}
+.client-details-content strong {
+  color: #1e3766;
+}
+
 .client-toast {
   position: fixed;
   right: 24px;
@@ -920,6 +944,10 @@ input {
   }
   .clients-list {
     grid-template-columns: 1fr;
+  }
+  .client-details-content p {
+    grid-template-columns: 1fr;
+    gap: 4px;
   }
 }
 body.dark-theme .client-search, body.dark-theme .clients-sort, body.dark-theme .client-card, body.dark-theme .clients-error {
@@ -1008,6 +1036,13 @@ body.dark-theme #client-form input, body.dark-theme #client-form select {
 body.dark-theme #client-form input:focus, body.dark-theme #client-form select:focus {
   border-color: #3d91f8;
   box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
+}
+body.dark-theme .client-details-content p {
+  color: #f4f4f4;
+  border-color: #374151;
+}
+body.dark-theme .client-details-content strong {
+  color: #93c5fd;
 }
 
 .profile-content {

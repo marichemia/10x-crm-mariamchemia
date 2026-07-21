@@ -304,8 +304,6 @@ closeModalBtnElement.addEventListener("click", closeModalWindow);
 closeClientDetailsBtnElement.addEventListener("click", closeClientDetailsModal);
 
 
-
-
 //add client form input fields
 const clientNameInputElement = document.getElementById("client-full-name");
 const clientEmailInputElement = document.getElementById("client-email");
@@ -313,6 +311,14 @@ const clientPhoneInputElement = document.getElementById("client-phone");
 const clientCompanyInputElement = document.getElementById("client-company");
 const clientStatusInputElement = document.getElementById("client-status");
 const clientValueInputElement = document.getElementById("client-value");
+
+//client details modal window data
+const clientDetailsEmailElement = document.getElementById("client-details-email");
+const clientDetailsPhoneElement = document.getElementById("client-details-phone");
+const clientDetailsCompanyElement = document.getElementById("client-details-company");
+const clientDetailsStatusElement = document.getElementById("client-details-status");
+const clientDetailsValueElement = document.getElementById("client-details-value");
+const clientDetailsCreatedAtElement = document.getElementById("client-details-created-at");
 
 
 clientFormElement.addEventListener("submit", event => {
@@ -354,6 +360,7 @@ clientFormElement.addEventListener("submit", event => {
 
     showToast("Your changes have been saved.");
 })
+
 
 clientsListElement.addEventListener("click", event => {
     const editButton = event.target.closest(".edit-client-btn");
@@ -409,6 +416,13 @@ clientsListElement.addEventListener("click", event => {
     }
 
     clientDetailsNameElement.textContent = selectedClient.fullName;
+    clientDetailsEmailElement.textContent = selectedClient.email;
+    clientDetailsPhoneElement.textContent = selectedClient.phone;
+    clientDetailsCompanyElement.textContent = selectedClient.company || "No Company";
+    clientDetailsStatusElement.textContent = selectedClient.status;
+    clientDetailsValueElement.textContent = `$${selectedClient.value.toLocaleString()}`;
+    clientDetailsCreatedAtElement.textContent = new Date(selectedClient.createdAt).toLocaleDateString();
+    
     clientDetailsModalElement.hidden = false;
 })
 

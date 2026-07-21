@@ -85,11 +85,36 @@
     </div>
     <div class="modal-window" id="client-details-modal" hidden>
         <div class="modal-content client-details-window">
-            <div id="modal-header">
+            <div  class="modal-header">
                 <h2 id="client-details-name">Client Details</h2>
-                <button class="modal-close-btn" id="close-client-details-btn" type="button"> &times;</button>
-            <div>
-            <div class="client-details-content" id="client-details-content"></div>
+                <button class="close-modal-btn" id="close-client-details-btn" type="button"> &times;</button>
+            </div>
+            <div class="client-details-content" id="client-details-content">
+                <p>
+                    <strong>Email:</strong>
+                    <span id="client-details-email"></span>
+                </p>
+                <p>
+                    <strong>Phone:</strong>
+                    <span id="client-details-phone"></span>
+                </p>
+                <p>
+                    <strong>Company:</strong>
+                    <span id="client-details-company"></span>
+                </p>
+                <p>
+                    <strong>Status:</strong>
+                    <span id="client-details-status"></span>
+                </p>
+                <p>
+                    <strong>Deal Value:</strong>
+                    <span id="client-details-value"></span>
+                </p>
+                <p>
+                    <strong>Client Since:</strong>
+                    <span id="client-details-created-at"></span>
+                </p>
+            </div>
         </div>
     </div>
     <div class="client-toast" id="client-toast" hidden></div>
