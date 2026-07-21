@@ -42,6 +42,7 @@ function renderClients(clientArr) {
     clientArr.forEach(client => {
         const clientCardElement =  document.createElement("div");
         clientCardElement.classList.add("client-card");
+        clientCardElement.dataset.clientId = client.id;
 
         const clientNameElement = document.createElement("h2");
         clientNameElement.classList.add("client-card-name");
@@ -115,7 +116,7 @@ function renderClients(clientArr) {
 
 loadClients();
 
-//search and filter variable
+//search and filter variables
 const searchElement = document.getElementById("client-search");
 const filterBtnElements = document.querySelectorAll(".status-filter");
 const sortElement = document.getElementById("clients-sort");
@@ -211,13 +212,15 @@ nextPgBtnElement.addEventListener("click", () => {
 
 clientsListElement.addEventListener ("change", event => {
     const statusSelect = event.target.closest(".client-status-select");
+    const clientId = Number(statusSelect.dataset.clientId);
+    const clientToUpdate = clients.find(client => client.id === clientId);
+    const clickedCard = event.target.closest(".client-card");
+    const selectedClient = clients.find(client => client.id === clientId);
+    //if status is being changed
 
     if (!statusSelect) {
         return;
     }
-
-    const clientId = Number(statusSelect.dataset.clientId);
-    const clientToUpdate = clients.find(client => client.id === clientId);
 
     if (!clientToUpdate) {
         return;
@@ -231,12 +234,18 @@ clientsListElement.addEventListener ("change", event => {
     showToast("Your changes have been saved.");
 })
 
-//open/close modal window
+//open/close modal window 
+//add/edit client
 const addClientBtnElement = document.getElementById("add-client-btn");
 const modalWindowElement = document.getElementById("modal-window");
 const modalWindowTitleElement = document.getElementById("modal-title");
 const closeModalBtnElement = document.getElementById("close-modal-btn");
 const clientFormElement = document.getElementById("client-form");
+//client detail modal window
+const clientDetailsModalElement = document.getElementById("client-details-modal");
+const clientDetailsNameElement = document.getElementById("client-details-name");
+const closeClientDetailsBtnElement = document.getElementById("close-client-details-btn");
+
 
 let editingClientId = null;
 
@@ -266,20 +275,35 @@ function closeModalWindow() {
     editingClientId = null;
 }
 
+function closeClientDetailsModal() {
+    clientDetailsModalElement.hidden = true;
+}
+
 modalWindowElement.addEventListener("click", event => {
     if (event.target === modalWindowElement) {
         closeModalWindow();
     }
 })
 
+clientDetailsModalElement.addEventListener("click", event => {
+    if (event.target === clientDetailsModalElement) {
+        closeClientDetailsModal();
+    }
+})
+
 document.addEventListener("keydown", event => {
     if (event.key === "Escape" && !modalWindowElement.hidden) {
         closeModalWindow();
+    } else if (event.key === "Escape" && !clientDetailsModalElement.hidden) {
+        closeClientDetailsModal();
     }
 })
 
 addClientBtnElement.addEventListener("click", openAddClientModal);
 closeModalBtnElement.addEventListener("click", closeModalWindow);
+closeClientDetailsBtnElement.addEventListener("click", closeClientDetailsModal);
+
+
 
 
 //add client form input fields
@@ -346,29 +370,46 @@ clientsListElement.addEventListener("click", event => {
         return;
     }
     //delete
-    if(!deleteButton) {
+    if(deleteButton) {
+        const clientId = Number(deleteButton.dataset.clientId);
+        const clientToDelete = clients.find(client => client.id === clientId);
+        
+        if(!clientToDelete) {
+            return;
+        }
+        const confirmed = window.confirm(`Delete ${clientToDelete.fullName}?`);
+
+        if (!confirmed) {
+            return;
+        }
+
+        clients = clients.filter(client => client.id !== clientId);
+
+        saveClients(clients);
+        updateClientList();
+        showToast("Your changes have been saved.");
+    } 
+
+    //do not upen details modal when using status dropdown
+    if (event.target.closest("select, .status-select-wrapper")) {
         return;
     }
 
-    const clientId = Number(deleteButton.dataset.clientId);
-    const clientToDelete = clients.find(client => client.id === clientId);
-    
-    if(!clientToDelete) {
-        return;
-    }
-    //confirm delete window
-    const confirmed = window.confirm(`Delete ${clientToDelete.fullName}?`);
+    const clickedCard = event.target.closest(".client-card");
 
-    if (!confirmed) {
+    if(!clickedCard) {
         return;
     }
 
-    clients = clients.filter(client => client.id !== clientId);
+    const selectedClientId = Number(clickedCard.dataset.clientId);
+    const selectedClient = clients.find(client => client.id === selectedClientId);
 
-    saveClients(clients);
-    updateClientList();
-    showToast("Your changes have been saved.");
+    if (!selectedClient) {
+        return;
+    }
 
+    clientDetailsNameElement.textContent = selectedClient.fullName;
+    clientDetailsModalElement.hidden = false;
 })
 
 //retry button
