@@ -406,6 +406,73 @@
     }
 }
 
+.client-notes {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid vars.$color-border;
+
+    h3 {
+        margin: 0 0 16px;
+        color: vars.$color-primary;
+    }
+}
+
+.client-notes-empty {
+    margin: 0 0 16px;
+    color: vars.$color-text-secondary;
+    font-size: 14px;
+}
+
+.client-notes-list {
+    display: grid;
+    gap: 10px;
+    margin: 0 0 18px;
+    padding: 0;
+    list-style: none;
+}
+
+.client-note-form {
+    display: grid;
+    gap: 10px;
+
+    label {
+        color: vars.$color-text;
+        font-weight: bold;
+    }
+
+    textarea {
+        width: 100%;
+        padding: 10px 12px;
+        color: vars.$color-text;
+        background-color: vars.$color-surface;
+        border: 1px solid vars.$color-border;
+        border-radius: 8px;
+        font: inherit;
+        resize: vertical;
+        outline: none;
+
+        &:focus {
+            border-color: vars.$color-primary;
+            box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.15);
+        }
+    }
+}
+
+.add-note-btn {
+    justify-self: start;
+    padding: 9px 16px;
+    color: vars.$color-surface;
+    background-color: vars.$color-primary;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+        background-color: darken(vars.$color-primary, 10%);
+    }
+}
+
 //toast notification
 
 .client-toast {
@@ -592,6 +659,35 @@ body.dark-theme {
 
         strong {
             color: #93c5fd;
+        }
+    }
+
+    .client-notes {
+        border-color: #374151;
+
+        h3 {
+            color: #f4f4f4;
+        }
+    }
+
+    .client-notes-empty {
+        color: #b8bec9;
+    }
+
+    .client-note-form {
+        label {
+            color: #f4f4f4;
+        }
+
+        textarea {
+            color: #f4f4f4;
+            background-color: #111827;
+            border-color: #4b5563;
+
+            &:focus {
+                border-color: #3d91f8;
+                box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
+            }
         }
     }
 

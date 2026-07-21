@@ -902,6 +902,68 @@ input {
   color: #1e3766;
 }
 
+.client-notes {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #b8b8b8;
+}
+.client-notes h3 {
+  margin: 0 0 16px;
+  color: #1e3766;
+}
+
+.client-notes-empty {
+  margin: 0 0 16px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.client-notes-list {
+  display: grid;
+  gap: 10px;
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.client-note-form {
+  display: grid;
+  gap: 10px;
+}
+.client-note-form label {
+  color: #1f2937;
+  font-weight: bold;
+}
+.client-note-form textarea {
+  width: 100%;
+  padding: 10px 12px;
+  color: #1f2937;
+  background-color: #ffffff;
+  border: 1px solid #b8b8b8;
+  border-radius: 8px;
+  font: inherit;
+  resize: vertical;
+  outline: none;
+}
+.client-note-form textarea:focus {
+  border-color: #1e3766;
+  box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.15);
+}
+
+.add-note-btn {
+  justify-self: start;
+  padding: 9px 16px;
+  color: #ffffff;
+  background-color: #1e3766;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.add-note-btn:hover {
+  background-color: rgb(18.4090909091, 33.75, 62.5909090909);
+}
+
 .client-toast {
   position: fixed;
   right: 24px;
@@ -1043,6 +1105,27 @@ body.dark-theme .client-details-content p {
 }
 body.dark-theme .client-details-content strong {
   color: #93c5fd;
+}
+body.dark-theme .client-notes {
+  border-color: #374151;
+}
+body.dark-theme .client-notes h3 {
+  color: #f4f4f4;
+}
+body.dark-theme .client-notes-empty {
+  color: #b8bec9;
+}
+body.dark-theme .client-note-form label {
+  color: #f4f4f4;
+}
+body.dark-theme .client-note-form textarea {
+  color: #f4f4f4;
+  background-color: #111827;
+  border-color: #4b5563;
+}
+body.dark-theme .client-note-form textarea:focus {
+  border-color: #3d91f8;
+  box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
 }
 
 .profile-content {

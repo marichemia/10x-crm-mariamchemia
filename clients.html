@@ -115,6 +115,16 @@
                     <span id="client-details-created-at"></span>
                 </p>
             </div>
+            <section class="client-notes">
+                <h3>Notes</h3>
+                <p id="client-notes-empty" class="client-notes-empty">No Existing Notes.</p>
+                <ul id="client-notes-list" class="client-notes-list"></ul>
+                <form id="client-note-form" class="client-note-form">
+                    <label for="client-note-input">Add a Note</label>
+                    <textarea id="client-note-input" rows="3" maxlength="500" placeholder="Add a note..." required></textarea>
+                    <button type="submit" class="add-note-btn">Add Note</button>
+                </form>
+            </section>
         </div>
     </div>
     <div class="client-toast" id="client-toast" hidden></div>
