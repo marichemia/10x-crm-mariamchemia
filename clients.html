@@ -49,12 +49,10 @@
             </div>
             <div class="clients-list" id="clients-list"></div>
         </section>
-        <div class="clients-list" id="clients-list">
-            <div class="pagination">
-                <button type="button" id="prev-pg-btn" class="pagination-btn">Prev</button>
-                <span id="pg-info"></span>
-                <button type="button" id="next-pg-btn" class="pagination-btn">Next</button>
-            </div>
+        <div class="pagination">
+            <button type="button" id="prev-pg-btn" class="pagination-btn">Prev</button>
+            <span id="pg-info"></span>
+            <button type="button" id="next-pg-btn" class="pagination-btn">Next</button>  
         </div>
     </main>
     <div class="modal-window" id="modal-window" hidden>
@@ -83,6 +81,15 @@
                 <input type="number" id="client-value" min="0" required>
                 <button type="submit" class="save-btn">Save</button>
             </form>
+        </div>
+    </div>
+    <div class="modal-window" id="client-details-modal" hidden>
+        <div class="modal-content client-details-window">
+            <div id="modal-header">
+                <h2 id="client-details-name">Client Details</h2>
+                <button class="modal-close-btn" id="close-client-details-btn" type="button"> &times;</button>
+            <div>
+            <div class="client-details-content" id="client-details-content"></div>
         </div>
     </div>
     <div class="client-toast" id="client-toast" hidden></div>

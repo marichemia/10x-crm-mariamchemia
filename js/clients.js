@@ -84,7 +84,7 @@ function renderClients(clientArr) {
         //empty span for dropdown arrow 
         const dropdownArrowElement = document.createElement("span");
         dropdownArrowElement.classList.add("dropdown-arrow");
-        dropdownArrowElement.textContent = "🔽";
+        dropdownArrowElement.textContent = "▾";
 
         statusWrapperElement.append( clientStatusElement,dropdownArrowElement);
 
