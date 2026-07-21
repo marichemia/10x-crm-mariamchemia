@@ -492,6 +492,29 @@
     }
 }
 
+.client-reminder-btn {
+    width: 100%;
+    margin-top: 20px;
+    padding: 11px 16px;
+    color: vars.$color-primary;
+    background-color: transparent;
+    border: 1px solid vars.$color-primary;
+    border-radius: 8px;
+    font: inherit;
+    font-weight: bold;
+    cursor: pointer;
+
+    &:hover {
+        color: vars.$color-surface;
+        background-color: vars.$color-primary;
+    }
+
+    &:focus-visible {
+        outline: 2px solid vars.$color-primary;
+        outline-offset: 2px;
+    }
+}
+
 //toast notification
 
 .client-toast {
@@ -711,16 +734,30 @@ body.dark-theme {
     }
 
     .client-note-item {
-    background-color: #111827;
-    border-color: #374151;
+        background-color: #111827;
+        border-color: #374151;
 
-    p {
-        color: #f4f4f4;
+        p {
+            color: #f4f4f4;
+        }
+
+        time {
+            color: #b8bec9;
+        }
     }
 
-    time {
-        color: #b8bec9;
+    .client-reminder-btn {
+        color: #93c5fd;
+        border-color: #60a5fa;
+
+        &:hover {
+            color: #111827;
+            background-color: #60a5fa;
+        }
+
+        &:focus-visible {
+            outline-color: #60a5fa;
+        }
     }
-}
 
 }

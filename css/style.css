@@ -981,6 +981,27 @@ input {
   font-size: 12px;
 }
 
+.client-reminder-btn {
+  width: 100%;
+  margin-top: 20px;
+  padding: 11px 16px;
+  color: #1e3766;
+  background-color: transparent;
+  border: 1px solid #1e3766;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: bold;
+  cursor: pointer;
+}
+.client-reminder-btn:hover {
+  color: #ffffff;
+  background-color: #1e3766;
+}
+.client-reminder-btn:focus-visible {
+  outline: 2px solid #1e3766;
+  outline-offset: 2px;
+}
+
 .client-toast {
   position: fixed;
   right: 24px;
@@ -1153,6 +1174,17 @@ body.dark-theme .client-note-item p {
 }
 body.dark-theme .client-note-item time {
   color: #b8bec9;
+}
+body.dark-theme .client-reminder-btn {
+  color: #93c5fd;
+  border-color: #60a5fa;
+}
+body.dark-theme .client-reminder-btn:hover {
+  color: #111827;
+  background-color: #60a5fa;
+}
+body.dark-theme .client-reminder-btn:focus-visible {
+  outline-color: #60a5fa;
 }
 
 .profile-content {

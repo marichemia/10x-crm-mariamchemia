@@ -326,6 +326,8 @@ let activeDetailsClientId = null;
 const clientNotesEmptyElement = document.getElementById("client-notes-empty");
 const clientNotesListElement = document.getElementById("client-notes-list");
 
+const clientReminderBtnElement = document.getElementById("client-reminder-btn");
+
 
 clientFormElement.addEventListener("submit", event => {
     console.log("submit works"); //testing
@@ -462,6 +464,27 @@ clientNoteFormElement.addEventListener("submit", event => {
     clientNoteFormElement.reset();
 
     showToast("Note added successfully.");
+
+})
+
+//timer button
+clientReminderBtnElement.addEventListener("click", () => {
+    if (activeDetailsClientId === null) {
+        return;
+    }
+
+    const activeClient = clients.find(client => client.id === activeDetailsClientId);
+
+    if (!activeClient) {
+        return;
+    }
+
+    const clientName = activeClient.fullName;
+
+    showToast("Reminder set.");
+    setTimeout(() => {
+        showToast(`Reminder: Follow up with ${clientName}.`);
+    }, 60*1000);
 
 })
 
