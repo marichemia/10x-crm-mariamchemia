@@ -63,9 +63,30 @@ function renderClients(clientArr) {
         clientValueElement.classList.add("client-card-value");
         clientValueElement.textContent = `$${client.value.toLocaleString()}`;
 
-        const clientStatusElement = document.createElement("span");
-        clientStatusElement.classList.add("client-card-status", `status-${client.status.toLowerCase()}`);
-        clientStatusElement.textContent = client.status;
+        //status dropdown
+        const statusWrapperElement = document.createElement("div");
+        statusWrapperElement.classList.add("status-select-wrapper");
+
+        const clientStatusElement = document.createElement("select");
+        clientStatusElement.classList.add("client-status-select", `status-${client.status.toLowerCase()}`);
+        clientStatusElement.dataset.clientId = client.id;
+        const statuses = ["Lead", "Contacted", "Won", "Lost"];
+
+        statuses.forEach(status => {
+            const optionElement = document.createElement("option");
+            optionElement.value = status;
+            optionElement.textContent = status;
+            optionElement.selected = status === client.status;
+
+            clientStatusElement.append(optionElement);
+        })
+
+        //empty span for dropdown arrow 
+        const dropdownArrowElement = document.createElement("span");
+        dropdownArrowElement.classList.add("dropdown-arrow");
+        dropdownArrowElement.textContent = "🔽";
+
+        statusWrapperElement.append( clientStatusElement,dropdownArrowElement);
 
         //edit and delete buttons
         const clientActionsElement = document.createElement("div");
@@ -85,7 +106,7 @@ function renderClients(clientArr) {
 
         clientActionsElement.append(editClientBtnEelement, deleteClientBtnElement);
 
-        clientCardElement.append(clientNameElement, clientCompanyElement, clientEmailElement, clientPhoneElement, clientValueElement, clientStatusElement, clientActionsElement);
+        clientCardElement.append(clientNameElement, clientCompanyElement, clientEmailElement, clientPhoneElement, clientValueElement, statusWrapperElement, clientActionsElement);
 
         clientsListElement.append(clientCardElement);
 
@@ -184,6 +205,30 @@ prevPgBtnElement.addEventListener("click", () => {
 nextPgBtnElement.addEventListener("click", () => {
     currentPg++;
     updateClientList();
+})
+
+//update status
+
+clientsListElement.addEventListener ("change", event => {
+    const statusSelect = event.target.closest(".client-status-select");
+
+    if (!statusSelect) {
+        return;
+    }
+
+    const clientId = Number(statusSelect.dataset.clientId);
+    const clientToUpdate = clients.find(client => client.id === clientId);
+
+    if (!clientToUpdate) {
+        return;
+    }
+
+    clientToUpdate.status = statusSelect.value;
+
+    saveClients(clients);
+    updateClientList();
+
+    showToast("Your changes have been saved.");
 })
 
 //open/close modal window

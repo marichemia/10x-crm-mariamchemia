@@ -653,30 +653,52 @@ input {
   font-size: 18px;
   font-weight: bold;
 }
-.clients-results .client-card-status {
+.clients-results .status-select-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+}
+.clients-results .client-status-select {
   display: inline-block;
-  padding: 5px 10px;
-  color: #1e3766;
-  background-color: #e2dede;
+  min-width: 120px;
+  appearance: none;
+  padding: 6px 12px 6px 10px;
+  border: 1.5px solid transparent;
+  font: inherit;
+  cursor: pointer;
+  outline: none;
   border-radius: 999px;
   font-size: 12px;
   font-weight: bold;
 }
-.clients-results .client-card-status.status-lead {
+.clients-results .client-status-select:focus {
+  border-color: #1e3766;
+}
+.clients-results .client-status-select.status-lead {
   color: #1d4ed8;
+  border-color: #426fea;
   background-color: #dbeafe;
 }
-.clients-results .client-card-status.status-contacted {
+.clients-results .client-status-select.status-contacted {
   color: #7e22ce;
+  border-color: #7e22ce;
   background-color: #f3e8ff;
 }
-.clients-results .client-card-status.status-won {
+.clients-results .client-status-select.status-won {
   color: #15803d;
+  border-color: #15803d;
   background-color: #dcfce7;
 }
-.clients-results .client-card-status.status-lost {
+.clients-results .client-status-select.status-lost {
   color: #b91c1c;
+  border-color: #b91c1c;
   background-color: #ffd5d5;
+}
+.clients-results .dropdown-arrow {
+  font-size: 20px;
+  pointer-events: none;
+  color: rgba(54, 56, 59, 0.568627451);
 }
 
 .client-message {
@@ -920,23 +942,22 @@ body.dark-theme .status-filter:hover {
   color: #ffffff;
   border-color: #ffffff;
 }
-body.dark-theme .client-card-status {
-  color: #f4f4f4;
-  background-color: #374151;
+body.dark-theme .client-status-select {
+  border-color: transparent;
 }
-body.dark-theme .client-card-status.status-lead {
+body.dark-theme .client-status-select.status-lead {
   color: #bfdbfe;
   background-color: #1e3a8a;
 }
-body.dark-theme .client-card-status.status-contacted {
+body.dark-theme .client-status-select.status-contacted {
   color: #e9d5ff;
   background-color: #581c87;
 }
-body.dark-theme .client-card-status.status-won {
+body.dark-theme .client-status-select.status-won {
   color: #bbf7d0;
   background-color: #14532d;
 }
-body.dark-theme .client-card-status.status-lost {
+body.dark-theme .client-status-select.status-lost {
   color: #fecaca;
   background-color: #ed4646;
 }

@@ -129,35 +129,60 @@
         font-weight: bold;
     }
 
-    .client-card-status {
+    .status-select-wrapper {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        width: fit-content;
+    }
+
+    .client-status-select {
         display: inline-block;
-        padding: 5px 10px;
-        color: vars.$color-primary;
-        background-color: vars.$color-bg;
+        min-width: 120px;
+        appearance: none;
+        padding: 6px 12px 6px 10px;
+        border: 1.5px solid transparent;
+        font: inherit;
+        cursor: pointer;
+        outline: none;
         border-radius: 999px;
         font-size: 12px;
         font-weight: bold;
 
+        &:focus {
+            border-color: vars.$color-primary;
+        }
+
         &.status-lead {
             color: #1d4ed8;
+            border-color: #426fea;;
             background-color: #dbeafe;
 
         }
 
         &.status-contacted {
             color: #7e22ce;
+            border-color: #7e22ce;
             background-color: #f3e8ff;
         }
 
         &.status-won {
             color: #15803d;
+            border-color: #15803d;
             background-color: #dcfce7;
         }
 
         &.status-lost {
             color: #b91c1c;
+            border-color: #b91c1c;
             background-color: #ffd5d5;
         }
+    }
+
+    .dropdown-arrow {
+        font-size: 20px;
+        pointer-events: none;
+        color: #36383b91;
     }
     
 }
@@ -432,9 +457,9 @@ body.dark-theme {
         }
     }
 
-    .client-card-status {
-        color: #f4f4f4;
-        background-color: #374151;
+    .client-status-select {
+       
+        border-color: transparent;
 
         &.status-lead {
             color: #bfdbfe;
