@@ -25,12 +25,33 @@
         <section class="profile-header">
             <h1>Profile</h1>
         </section>
+        <section class="profile-summary">
+            <div class="profile-avatar" id="profile-avatar-initials">--</div>
+            <div class="profile-summary-details">
+                <h2 id="profile-summary-name">user@user.user</h2>
+                <p>
+                    <strong>Email:</strong>
+                    <span id="profile-summary-email"></span>
+                </p>
+                <p>
+                    <strong>Company:</strong>
+                    <span id="profile-summary-company">No company</span>
+                </p>
+                <p>
+                    <strong>Member Since:</strong>
+                    <span id="profile-member-since">-</span>
+                </p>
+            </div>
+        </section>
         <section class="profile-sections">
             <div class="profile-card">
                 <h2>Personal Information</h2>
                 <form id="profile-info-form">
                     <label for="profile-full-name"> Full Name </label>
                     <input type="text" id="profile-full-name">
+
+                    <label for="profile-company">Company:</label>
+                    <input type="text" id="profile-company" placeholder="Enter Your Company">
 
                     <label for="profile-email">Email</label>
                     <input type="text" id="profile-email" disabled>

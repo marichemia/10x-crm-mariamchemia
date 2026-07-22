@@ -1,12 +1,23 @@
 import {session} from "./shared.js";
 import { getUsers, saveUsers } from "./storage.js";
 console.log(session) //testing
-
+//profile summary elements
+const profileAvatarInitialsElement = document.getElementById("profile-avatar-initials");
+const profileSummaryNameElement = document.getElementById("profile-summary-name");
+const profileSummaryEmailElement = document.getElementById("profile-summary-email");
+const profileSummaryCompanyElement = document.getElementById("profile-summary-company");
+const profileSummaryMemberSinceElement = document.getElementById("profile-member-since");
+//change name elements
 const nameInputElement = document.getElementById("profile-full-name");
 const emailInputElement = document.getElementById("profile-email");
+const companyInputElement = document.getElementById("profile-company");
 let users = getUsers();
 
-//function for displaying error/success messages
+function getUserInitials(fullName) {
+    return fullName.trim().split(" ").map(a => a[0].toUpperCase()).join("");
+}
+
+
 function showProfileMsg(element, message, type) {
     element.textContent = message;
     element.classList.remove("success", "error");
@@ -17,8 +28,17 @@ function showProfileMsg(element, message, type) {
 let currentUser = users.find(user => user.id === session.userId);
 //change name
 if(currentUser) {
+    //profile summary section
+    profileAvatarInitialsElement.textContent = getUserInitials(currentUser.fullName);
+    profileSummaryNameElement.textContent = currentUser.fullName;
+    profileSummaryEmailElement.textContent = currentUser.email;
+    profileSummaryCompanyElement.textContent = currentUser.company || "No company available.";
+    profileSummaryMemberSinceElement.textContent = currentUser.createdAt ? new Date(currentUser.createdAt).toLocaleDateString("en-US", {month:"long", year:"numeric"}) : "Unknown";
+
+    //change name section
     nameInputElement.value = currentUser.fullName;
     emailInputElement.value = currentUser.email;
+    companyInputElement.value = currentUser.company || "";
 }
 
 const profileInfoElement = document.getElementById("profile-info-form");
@@ -27,6 +47,7 @@ const profileInforMsgElement = document.getElementById("profile-info-message");
 profileInfoElement.addEventListener("submit", event => {
     event.preventDefault();
     const updatedName = nameInputElement.value.trim();
+    const updatedCompany = companyInputElement.value.trim();
     //return if the input field is empty
     if(!updatedName) {
         showProfileMsg(profileInforMsgElement, "Name field is empty.", "error");
@@ -34,9 +55,12 @@ profileInfoElement.addEventListener("submit", event => {
     }
 
     currentUser.fullName = updatedName;
+    currentUser.company = updatedCompany;
     saveUsers(users);
 
     nameInputElement.value = updatedName;
+    profileSummaryCompanyElement.textContent = updatedCompany || "No company available.";
+    profileAvatarInitialsElement.textContent = getUserInitials(updatedName);
     showProfileMsg(profileInforMsgElement, "Your changes have been saved.", "success");
 })
 

@@ -1207,10 +1207,10 @@ body.dark-theme .client-reminder-btn:focus-visible {
   padding: 32px;
 }
 
-.profile.header {
+.profile-header {
   margin-bottom: 24px;
 }
-.profile.header h1 {
+.profile-header h1 {
   margin: 0;
   color: #1e3766;
   font-size: 28px;
@@ -1254,7 +1254,7 @@ body.dark-theme .client-reminder-btn:focus-visible {
   outline: none;
 }
 .profile-card input:focus {
-  border-radius: #1e3766;
+  border-color: #1e3766;
   box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.15);
 }
 .profile-card input:disabled {

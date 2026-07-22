@@ -7,7 +7,7 @@
     padding: 32px;
 }
 
-.profile.header {
+.profile-header {
     margin-bottom: 24px;
 
     h1 {
@@ -58,7 +58,7 @@
         outline: none;
 
         &:focus {
-            border-radius: vars.$color-primary;
+            border-color: vars.$color-primary;
             box-shadow: 0 0 0 2px rgba(30, 55, 102, 0.15);
         }
 
