@@ -340,13 +340,13 @@ clientFormElement.addEventListener("submit", async event => {
 
     //validation
     let formValid = true;
-    const inputedName = clientNameInputElement.value.trim();
-    const inputedEmail = clientEmailInputElement.value.trim().toLowerCase();
-    const inputedPhone = clientPhoneInputElement.value.trim();
-    const inputedCompany = clientCompanyInputElement.value.trim();
-    const inputedStatus = clientStatusInputElement.value;
-    const inputedValue = clientValueInputElement.value.trim();
-    const dealValue = Number(inputedValue);
+    const inputtedName = clientNameInputElement.value.trim();
+    const inputtedEmail = clientEmailInputElement.value.trim().toLowerCase();
+    const inputtedPhone = clientPhoneInputElement.value.trim();
+    const inputtedCompany = clientCompanyInputElement.value.trim();
+    const inputtedStatus = clientStatusInputElement.value;
+    const inputtedValue = clientValueInputElement.value.trim();
+    const dealValue = Number(inputtedValue);
 
     clientNameErrElement.textContent = "";
     clientEmailErrElement.textContent = "";
@@ -365,10 +365,10 @@ clientFormElement.addEventListener("submit", async event => {
     }
 
     //validate email
-    const atIndex = inputedEmail.indexOf("@");
-    const dotIndex = inputedEmail.lastIndexOf(".");
-    const validateEmail = atIndex > 0 && dotIndex > atIndex + 1 && dotIndex < inputedEmail.length - 1;
-    const emailExists = clients.some(client => client.email.toLowerCase() === inputedEmail && client.id !== editingClientId);
+    const atIndex = inputtedEmail.indexOf("@");
+    const dotIndex = inputtedEmail.lastIndexOf(".");
+    const validateEmail = atIndex > 0 && dotIndex > atIndex + 1 && dotIndex < inputtedEmail.length - 1;
+    const emailExists = clients.some(client => client.email.toLowerCase() === inputtedEmail && client.id !== editingClientId);
     if (!validateEmail) {
         clientEmailErrElement.textContent = "Please enter a valid email address.";
         clientEmailInputElement.classList.add("input-error");
@@ -380,14 +380,14 @@ clientFormElement.addEventListener("submit", async event => {
     }
 
     //validate phone
-    if (inputedPhone.length < 6) {
+    if (inputtedPhone.length < 6) {
         clientPhoneErrElement.textContent = "Phone number must contain at least 6 characters.";
         clientPhoneInputElement.classList.add("input-error");
         formValid = false;
     }
 
     //validate value
-    if (inputedValue === "" || !Number.isFinite(dealValue) || dealValue <= 0) {
+    if (inputtedValue === "" || !Number.isFinite(dealValue) || dealValue <= 0) {
         clientValueErrElement.textContent = "Please enter valid amount.";
         clientValueInputElement.classList.add("input-error");
         formValid = false;
