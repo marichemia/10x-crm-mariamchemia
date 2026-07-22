@@ -95,7 +95,7 @@ function renderClients(clientArr) {
         //empty span for dropdown arrow 
         const dropdownArrowElement = document.createElement("span");
         dropdownArrowElement.classList.add("dropdown-arrow");
-        dropdownArrowElement.textContent = "▾";
+        //dropdownArrowElement.textContent = "▾";
 
         statusWrapperElement.append( clientStatusElement,dropdownArrowElement);
 
@@ -255,6 +255,7 @@ const clientFormElement = document.getElementById("client-form");
 const clientDetailsModalElement = document.getElementById("client-details-modal");
 const clientDetailsNameElement = document.getElementById("client-details-name");
 const closeClientDetailsBtnElement = document.getElementById("close-client-details-btn");
+const clientDetailsAvatarElement = document.getElementById("client-details-avatar");
 
 
 let editingClientId = null;
@@ -539,6 +540,16 @@ clientsListElement.addEventListener("click", async event => {
     if (!selectedClient) {
         return;
     }
+
+    clientDetailsAvatarElement.innerHTML = "";
+    if (selectedClient.image) {
+        const avatarImageElement = document.createElement("img");
+        avatarImageElement.src = selectedClient.image;
+        clientDetailsAvatarElement.append(avatarImageElement);
+    } else {
+        clientDetailsAvatarElement.textContent = getClientInitials(selectedClient.fullName);
+    }
+
 
     clientDetailsNameElement.textContent = selectedClient.fullName;
     clientDetailsEmailElement.textContent = selectedClient.email;
