@@ -329,7 +329,7 @@ const clientNotesListElement = document.getElementById("client-notes-list");
 const clientReminderBtnElement = document.getElementById("client-reminder-btn");
 
 
-clientFormElement.addEventListener("submit", event => {
+clientFormElement.addEventListener("submit", async event => {
     console.log("submit works"); //testing
     event.preventDefault();
     //extract form data
@@ -344,14 +344,42 @@ clientFormElement.addEventListener("submit", event => {
 
     //check if the form is for editing or adding
     if (editingClientId === null) {
-        const newClient = {
-            id: Date.now(),
-            ...formData, 
-            createdAt: new Date().toISOString()
-        }
+        try {
+            const response = await fetch("https://dummyjson.com/users/add", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(formData)
+            });
 
-        clients.push(newClient);
-        currentPg = 1;
+            if(!response.ok) {
+                throw new Error(`POST request failed: ${response.status}`);
+            }
+
+            const createdClientResponse = await response.json();
+            console.log(createdClientResponse); //testing
+
+            const newClient = {
+                ...formData, 
+                id: createdClientResponse.id, 
+                notes: [], 
+                createdAt: new Date().toISOString()
+            };
+
+            clients.unshift(newClient);
+            currentPg = 1;
+
+            saveClients(clients);
+            updateClientList();
+            closeModalWindow();
+
+            showToast("Client Added.")
+        } catch (e) {
+            console.error(e);
+            showToast("Could not add client. Please try again.");
+        }
+        return;
     } else {
         const clientIndex = clients.findIndex(client => client.id === editingClientId);
         if (clientIndex !== -1) {
@@ -370,7 +398,7 @@ clientFormElement.addEventListener("submit", event => {
 })
 
 
-clientsListElement.addEventListener("click", event => {
+clientsListElement.addEventListener("click", async event => {
     const editButton = event.target.closest(".edit-client-btn");
     const deleteButton = event.target.closest(".delete-client-btn");
     //edit 
@@ -398,11 +426,24 @@ clientsListElement.addEventListener("click", event => {
             return;
         }
 
-        clients = clients.filter(client => client.id !== clientId);
+       try {
+            const response = await fetch(`https://dummyjson.com/users/${clientId}`,  {
+                method: "DELETE"
+            });
 
-        saveClients(clients);
-        updateClientList();
-        showToast("Your changes have been saved.");
+            if (!response.ok && response.status !== 404 ) {
+                throw new Error(response.status);
+            }
+
+            clients = clients.filter(client => client.id !== clientId);
+
+            saveClients(clients);
+            updateClientList();
+            showToast("Client Deleted");
+       } catch (e) {
+            console.error(e);
+            showToast("Could not delete client. Please try again.");
+       }
     } 
 
     //do not upen details modal when using status dropdown
