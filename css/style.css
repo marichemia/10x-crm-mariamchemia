@@ -877,6 +877,14 @@ input {
 #client-form .save-btn:hover {
   background-color: rgb(18.4090909091, 33.75, 62.5909090909);
 }
+#client-form .form-error {
+  margin: 0;
+  color: #c0392b;
+  font-size: 14px;
+}
+#client-form .form-error:empty {
+  display: none;
+}
 
 .client-details-window {
   max-width: 560px;

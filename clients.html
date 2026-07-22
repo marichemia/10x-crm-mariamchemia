@@ -61,15 +61,22 @@
                 <h2 id="modal-title">Add Client</h2>
                 <button type="button" id="close-modal-btn" class="close-modal-btn" aria-label="Close Form Window">&times;</button>
             </div>
-            <form id="client-form">
+            <form id="client-form" novalidate>
                 <label for="client-full-name"></label>
-                <input type="text" id="client-full-name" required>
+                <input type="text" id="client-full-name">
+                <p class="form-error" id="client-name-error"></p>
+
                 <label for="client-email">Email</label>
-                <input type="email" id="client-email" required>
+                <input type="email" id="client-email">
+                <p class="form-error" id="client-email-error"></p>
+
                 <label for="client-phone">Phone</label>
-                <input type="text" id="client-phone" required>
+                <input type="text" id="client-phone">
+                <p class="form-error" id="client-phone-error"></p>
+
                 <label for="client-company">Company</label>
                 <input type="text" id="client-company">
+                
                 <label for="client-status">Status</label>
                 <select id="client-status" required>
                     <option value="Lead">Lead</option>
@@ -77,8 +84,11 @@
                     <option value="Won">Won</option>
                     <option value="Lost">Lost</option>
                 </select>
+
                 <label for="client-value">Deal Value</label>
-                <input type="number" id="client-value" min="0" required>
+                <input type="number" id="client-value">
+                <p class="form-error" id="client-value-error"></p>
+                
                 <button type="submit" class="save-btn">Save</button>
             </form>
         </div>

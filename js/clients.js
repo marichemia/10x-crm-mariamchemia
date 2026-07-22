@@ -311,6 +311,11 @@ const clientPhoneInputElement = document.getElementById("client-phone");
 const clientCompanyInputElement = document.getElementById("client-company");
 const clientStatusInputElement = document.getElementById("client-status");
 const clientValueInputElement = document.getElementById("client-value");
+//error messages
+const clientNameErrElement = document.getElementById("client-name-error");
+const clientEmailErrElement = document.getElementById("client-email-error");
+const clientPhoneErrElement = document.getElementById("client-phone-error");
+const clientValueErrElement = document.getElementById("client-value-error");
 
 //client details modal window data
 const clientDetailsEmailElement = document.getElementById("client-details-email");
@@ -332,6 +337,66 @@ const clientReminderBtnElement = document.getElementById("client-reminder-btn");
 clientFormElement.addEventListener("submit", async event => {
     console.log("submit works"); //testing
     event.preventDefault();
+
+    //validation
+    let formValid = true;
+    const inputedName = clientNameInputElement.value.trim();
+    const inputedEmail = clientEmailInputElement.value.trim().toLowerCase();
+    const inputedPhone = clientPhoneInputElement.value.trim();
+    const inputedCompany = clientCompanyInputElement.value.trim();
+    const inputedStatus = clientStatusInputElement.value;
+    const inputedValue = clientValueInputElement.value.trim();
+    const dealValue = Number(inputedValue);
+
+    clientNameErrElement.textContent = "";
+    clientEmailErrElement.textContent = "";
+    clientPhoneErrElement.textContent = "";
+    clientValueErrElement.textContent = "";
+    clientNameInputElement.classList.remove("input-error");
+    clientEmailInputElement.classList.remove("input-error");
+    clientPhoneInputElement.classList.remove("input-error");
+    clientValueInputElement.classList.remove("input-error");
+
+    //validate name
+    if(clientNameInputElement.value.trim().length < 4) {
+        clientNameErrElement.textContent = "Name must contain more than 3 characters.";
+        clientNameInputElement.classList.add("input-error");
+        formValid = false;
+    }
+
+    //validate email
+    const atIndex = inputedEmail.indexOf("@");
+    const dotIndex = inputedEmail.lastIndexOf(".");
+    const validateEmail = atIndex > 0 && dotIndex > atIndex + 1 && dotIndex < inputedEmail.length - 1;
+    const emailExists = clients.some(client => client.email.toLowerCase() === inputedEmail && client.id !== editingClientId);
+    if (!validateEmail) {
+        clientEmailErrElement.textContent = "Please enter a valid email address.";
+        clientEmailInputElement.classList.add("input-error");
+        formValid = false;
+    } else if (emailExists) {
+        clientEmailErrElement.textContent = "Another client with this email address already exists."
+        clientEmailInputElement.classList.add("input-error");
+        formValid = false;
+    }
+
+    //validate phone
+    if (inputedPhone.length < 6) {
+        clientPhoneErrElement.textContent = "Phone number must contain at least 6 characters.";
+        clientPhoneInputElement.classList.add("input-error");
+        formValid = false;
+    }
+
+    //validate value
+    if (inputedValue === "" || !Number.isFinite(dealValue) || dealValue <= 0) {
+        clientValueErrElement.textContent = "Please enter valid amount.";
+        clientValueInputElement.classList.add("input-error");
+        formValid = false;
+    }
+
+    if(!formValid) {
+        return;
+    }
+
     //extract form data
     const formData = {
         fullName: clientNameInputElement.value.trim(),

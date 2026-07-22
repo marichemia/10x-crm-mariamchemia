@@ -376,6 +376,16 @@
             background-color: darken(vars.$color-primary, 10%);
         }
     }
+
+    .form-error {
+    margin: 0;
+    color: vars.$color-error;
+    font-size: 14px;
+
+    &:empty {
+        display: none;
+    }
+}
 }
 
 //client details modal window
