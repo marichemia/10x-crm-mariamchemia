@@ -89,11 +89,17 @@ passwordFormElement.addEventListener("submit", event => {
     const newPassword = newPasswordElement.value;
     const confirmedPassword = conffirmPasswordElement.value;
 
-    //cancel if password is wrong or new passwords don't match
+    //cancel if password change is invalid
     passwordMsgElement.textContent = "";
+    console.log(currentUser.password);
 
     if(currentPassword !== currentUser.password) {
         showProfileMsg(passwordMsgElement, "Your current password is incorrect.", "error");
+        return;
+    }
+
+    if (newPassword === currentUser.password) {
+        showProfileMsg(passwordMsgElement, "New password must be different from your current password.", "error");
         return;
     }
 
