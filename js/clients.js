@@ -585,7 +585,7 @@ clientNoteFormElement.addEventListener("submit", event => {
         createdAt: new Date().toISOString()
     }
 
-    activeClient.notes.unshift(newNote);
+    activeClient.notes.push(newNote);
     saveClients(clients);
     displayClientNotes(activeClient);
     clientNoteFormElement.reset();
