@@ -442,7 +442,7 @@ clientFormElement.addEventListener("submit", async event => {
             showToast("Client Added.")
         } catch (e) {
             console.error(e);
-            showToast("Could not add client. Please try again.");
+            showToast("Could not add client. Please try again.", "error");
         }
         return;
     } else {
@@ -507,7 +507,7 @@ clientsListElement.addEventListener("click", async event => {
             showToast("Client Deleted");
        } catch (e) {
             console.error(e);
-            showToast("Could not delete client. Please try again.");
+            showToast("Could not delete client. Please try again.", "error");
        }
     } 
 
@@ -602,14 +602,16 @@ retryBtnElement.addEventListener("click", loadClients);
 const toastElement = document.getElementById("client-toast");
 let toastTimeout;
 
-function showToast(message) {
+function showToast(message, type="success") {
     clearTimeout(toastTimeout);
     toastElement.textContent = message;
+    toastElement.classList.remove("success", "error");
+    toastElement.classList.add(type);
     toastElement.hidden = false;
 
     toastTimeout = setTimeout(() => {
         toastElement.hidden = true;
-    }, 2500);
+    }, 3000);
 }
 
 //display notes
