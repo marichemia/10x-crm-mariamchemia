@@ -49,8 +49,8 @@ function renderClients(clientArr) {
         clientNameElement.textContent = client.fullName;
 
         const clientCompanyElement = document.createElement("p");
-        clientCardElement.classList.add("client-card-detail");
-        clientCardElement.textContent = client.company;
+        clientCompanyElement.classList.add("client-card-detail");
+        clientCompanyElement.textContent = client.company;
 
         const clientEmailElement = document.createElement("p");
         clientEmailElement.classList.add("client-card-detail");
@@ -63,6 +63,16 @@ function renderClients(clientArr) {
         const clientValueElement = document.createElement("p");
         clientValueElement.classList.add("client-card-value");
         clientValueElement.textContent = `$${client.value.toLocaleString()}`;
+
+        const clientAvatarElement = document.createElement("div");
+        clientAvatarElement.classList.add("client-card-avatar");
+        if (client.image) {
+            const clientAvatarImageElement = document.createElement("img");
+            clientAvatarImageElement.src = client.image;
+            clientAvatarElement.append(clientAvatarImageElement);
+        } else {
+            clientAvatarElement.textContent = getClientInitials(client.fullName);
+        }
 
         //status dropdown
         const statusWrapperElement = document.createElement("div");
@@ -107,7 +117,7 @@ function renderClients(clientArr) {
 
         clientActionsElement.append(editClientBtnEelement, deleteClientBtnElement);
 
-        clientCardElement.append(clientNameElement, clientCompanyElement, clientEmailElement, clientPhoneElement, clientValueElement, statusWrapperElement, clientActionsElement);
+        clientCardElement.append(clientAvatarElement, clientNameElement, clientCompanyElement, clientEmailElement, clientPhoneElement, clientValueElement, statusWrapperElement, clientActionsElement);
 
         clientsListElement.append(clientCardElement);
 
@@ -631,6 +641,11 @@ function displayClientNotes(client) {
         noteItemElement.append(noteTextElement, noteDateElement);
         clientNotesListElement.append(noteItemElement);
     })
+}
+
+//get initials
+function getClientInitials(fullName) {
+    return fullName.trim().split(" ").slice(0, 2).map(a => a[0].toUpperCase()).join("");
 }
 
 

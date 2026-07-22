@@ -26,7 +26,8 @@ export async function initializeClients() {
             value: (index + 1) * 500, 
             createdAt: new Date(
                 Date.now() - index * 24 * 60 * 60 * 1000
-            ).toISOString()
+            ).toISOString(),
+            image: user.image || ""
         }
     })
 
