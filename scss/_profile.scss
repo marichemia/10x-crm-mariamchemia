@@ -107,6 +107,46 @@
     }
 }
 
+//reset section
+.reset-section {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 20px;
+    border-color: vars.$color-error;
+
+    h2 {
+        color: vars.$color-error;
+    }
+
+    p {
+        margin: 0;
+        color: vars.$color-text;
+        line-height: 1.5;
+        font-weight: bold;
+    }
+
+    .profile-message {
+        grid-column: 1 / -1;
+    }
+
+    .reset-crm-btn {
+        padding: 10px 16px;
+        color: vars.$color-error;
+        background-color: vars.$color-error;
+        border: 1px solid vars.$color-error;
+        border-radius: 8px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #ffffff;
+
+        &:hover {
+            background-color: darken(vars.$color-error, 10%);
+        }
+    }
+}
+
 //dark theme styles
 body.dark-theme {
     .profile-card {
@@ -139,7 +179,17 @@ body.dark-theme {
         }
     }
 
-  
+    .reset-section {
+        border-color: #eb4b4b;
+
+        h2 {
+            color: #f87171;
+        }
+
+        p {
+            color: #ffffff;
+        }
+    }
 }
 
 //responsive styles
@@ -150,5 +200,13 @@ body.dark-theme {
 
     .profile-sections {
         grid-template-columns: 1fr;
+    }
+
+    .reset-section {
+        grid-template-columns: 1fr;
+    }
+
+    .reset-crm-btn {
+        width: 100%;
     }
 }

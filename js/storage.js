@@ -51,3 +51,8 @@ export function areClientsInitialized() {
 export function markClientsInitialized() {
   localStorage.setItem(CLIENTS_INITIALIZED_KEY, "true");
 }
+
+export function resetClientData() {
+  localStorage.removeItem(CLIENTS_KEY);
+  localStorage.removeItem(CLIENTS_INITIALIZED_KEY);
+}

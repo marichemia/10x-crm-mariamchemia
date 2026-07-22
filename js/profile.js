@@ -1,5 +1,8 @@
 import {session} from "./shared.js";
-import { getUsers, saveUsers } from "./storage.js";
+import { getUsers, saveUsers, resetClientData, markClientsInitialized } from "./storage.js";
+import { initializeClients } from "./clientsData.js";
+
+
 console.log(session) //testing
 //profile summary elements
 const profileAvatarInitialsElement = document.getElementById("profile-avatar-initials");
@@ -118,6 +121,28 @@ passwordFormElement.addEventListener("submit", event => {
 
     passwordFormElement.reset();
     showProfileMsg(passwordMsgElement, "Your password has been updated.", "success");
+})
+
+//reset
+const resetCrmDataBtnElement = document.getElementById("reset-crm-btn");
+const resetCrmMsgElement = document.getElementById("recet-crm-msg");
+
+resetCrmDataBtnElement.addEventListener("click", async () => {
+    const confirmed = window.confirm("Reset all CRM client data?");
+    if(!confirmed) {
+        return;
+    }
+
+    try {
+        resetClientData();
+        await initializeClients();
+        showProfileMsg(resetCrmMsgElement, "CRM client data has been reset.", "success");
+    } catch (e) {
+        console.error(e);
+        showProfileMsg(resetCrmMsgElement, "Could not reset CRM data. Please try again.", "error");
+    }
+
+    
 })
 
 

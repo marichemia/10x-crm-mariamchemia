@@ -1295,6 +1295,40 @@ body.dark-theme .client-reminder-btn:focus-visible {
   color: #c0392b;
 }
 
+.reset-section {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 20px;
+  border-color: #c0392b;
+}
+.reset-section h2 {
+  color: #c0392b;
+}
+.reset-section p {
+  margin: 0;
+  color: #1f2937;
+  line-height: 1.5;
+  font-weight: bold;
+}
+.reset-section .profile-message {
+  grid-column: 1/-1;
+}
+.reset-section .reset-crm-btn {
+  padding: 10px 16px;
+  color: #c0392b;
+  background-color: #c0392b;
+  border: 1px solid #c0392b;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  color: #ffffff;
+}
+.reset-section .reset-crm-btn:hover {
+  background-color: rgb(150.3319148936, 44.629787234, 33.6680851064);
+}
+
 body.dark-theme .profile-card {
   background-color: #1f2937;
   border-color: #374151;
@@ -1318,6 +1352,15 @@ body.dark-theme .profile-card .profile-message.success {
 body.dark-theme .profile-card .profile-message.error {
   color: #eb4b4b;
 }
+body.dark-theme .reset-section {
+  border-color: #eb4b4b;
+}
+body.dark-theme .reset-section h2 {
+  color: #f87171;
+}
+body.dark-theme .reset-section p {
+  color: #ffffff;
+}
 
 @media (max-width: 750px) {
   .profile-content {
@@ -1325,6 +1368,12 @@ body.dark-theme .profile-card .profile-message.error {
   }
   .profile-sections {
     grid-template-columns: 1fr;
+  }
+  .reset-section {
+    grid-template-columns: 1fr;
+  }
+  .reset-crm-btn {
+    width: 100%;
   }
 }
 
