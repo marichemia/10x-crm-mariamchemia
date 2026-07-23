@@ -369,8 +369,8 @@ clientFormElement.addEventListener("submit", async event => {
     clientValueInputElement.classList.remove("input-error");
 
     //validate name
-    if(clientNameInputElement.value.trim().length < 4) {
-        clientNameErrElement.textContent = "Name must contain more than 3 characters.";
+    if(clientNameInputElement.value.trim().length < 3) {
+        clientNameErrElement.textContent = "Name must be at least 3 characters";
         clientNameInputElement.classList.add("input-error");
         formValid = false;
     }
@@ -381,25 +381,25 @@ clientFormElement.addEventListener("submit", async event => {
     const validateEmail = atIndex > 0 && dotIndex > atIndex + 1 && dotIndex < inputtedEmail.length - 1;
     const emailExists = clients.some(client => client.email.toLowerCase() === inputtedEmail && client.id !== editingClientId);
     if (!validateEmail) {
-        clientEmailErrElement.textContent = "Please enter a valid email address.";
+        clientEmailErrElement.textContent = "Please enter a valid email address";
         clientEmailInputElement.classList.add("input-error");
         formValid = false;
     } else if (emailExists) {
-        clientEmailErrElement.textContent = "Another client with this email address already exists."
+        clientEmailErrElement.textContent = "An account with this email already exists";
         clientEmailInputElement.classList.add("input-error");
         formValid = false;
     }
 
     //validate phone
-    if (inputtedPhone.length < 6) {
-        clientPhoneErrElement.textContent = "Phone number must contain at least 6 characters.";
+    if (inputtedPhone !== "" && inputtedPhone.length < 6) {
+        clientPhoneErrElement.textContent = "Phone number looks too short";
         clientPhoneInputElement.classList.add("input-error");
         formValid = false;
     }
 
     //validate value
     if (inputtedValue === "" || !Number.isFinite(dealValue) || dealValue <= 0) {
-        clientValueErrElement.textContent = "Please enter valid amount.";
+        clientValueErrElement.textContent = "Deal value must be a positive number";
         clientValueInputElement.classList.add("input-error");
         formValid = false;
     }
@@ -450,7 +450,7 @@ clientFormElement.addEventListener("submit", async event => {
             updateClientList();
             closeModalWindow();
 
-            showToast("Client Added.")
+            showToast("Client added ✓")
         } catch (e) {
             console.error(e);
             showToast("Could not add client. Please try again.", "error");
@@ -496,7 +496,7 @@ clientsListElement.addEventListener("click", async event => {
         if(!clientToDelete) {
             return;
         }
-        const confirmed = window.confirm(`Delete ${clientToDelete.fullName}?`);
+        const confirmed = window.confirm("Delete this client? This cannot be undone.");
 
         if (!confirmed) {
             return;
@@ -515,7 +515,7 @@ clientsListElement.addEventListener("click", async event => {
 
             saveClients(clients);
             updateClientList();
-            showToast("Client Deleted");
+            showToast("Client deleted");
        } catch (e) {
             console.error(e);
             showToast("Could not delete client. Please try again.", "error");
@@ -608,9 +608,9 @@ clientReminderBtnElement.addEventListener("click", () => {
 
     const clientName = activeClient.fullName;
 
-    showToast("Reminder set.");
+    showToast("Reminder set ✓");
     setTimeout(() => {
-        showToast(`Reminder: Follow up with ${clientName}.`);
+        showToast(`⏰ Follow up: ${clientName}`);
     }, 60*1000);
 
 })

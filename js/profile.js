@@ -55,6 +55,9 @@ profileInfoElement.addEventListener("submit", event => {
     if(!updatedName) {
         showProfileMsg(profileInforMsgElement, "Name field is empty.", "error");
         return;
+    } else if (updatedName.length < 3) {
+        showProfileMsg(profileInforMsgElement, "Full name must be at least 3 character", "error");
+        return;
     }
 
     currentUser.fullName = updatedName;
@@ -64,7 +67,8 @@ profileInfoElement.addEventListener("submit", event => {
     nameInputElement.value = updatedName;
     profileSummaryCompanyElement.textContent = updatedCompany || "No company available.";
     profileAvatarInitialsElement.textContent = getUserInitials(updatedName);
-    showProfileMsg(profileInforMsgElement, "Your changes have been saved.", "success");
+    profileSummaryNameElement.textContent = updatedName;
+    showProfileMsg(profileInforMsgElement, "Profile updated ✓", "success");
 })
 
 //change password
@@ -97,22 +101,22 @@ passwordFormElement.addEventListener("submit", event => {
     console.log(currentUser.password);
 
     if(currentPassword !== currentUser.password) {
-        showProfileMsg(passwordMsgElement, "Your current password is incorrect.", "error");
+        showProfileMsg(passwordMsgElement, "Current password is incorrect", "error");
         return;
     }
 
     if (newPassword === currentUser.password) {
-        showProfileMsg(passwordMsgElement, "New password must be different from your current password.", "error");
+        showProfileMsg(passwordMsgElement, "New password must be different from the current one", "error");
         return;
     }
 
     if(!passwordValidation(newPassword)){
-        showProfileMsg(passwordMsgElement, "Password must contain at least 8 character, inclluding Uppercase, Lowercase and a Number.", "error");
+        showProfileMsg(passwordMsgElement, "Password must be at least 8 characters and contain a letter and a number", "error");
         return;
     }
 
     if(newPassword !== confirmedPassword) {
-        showProfileMsg(passwordMsgElement, "Passwords do not match.", "error");
+        showProfileMsg(passwordMsgElement, "Passwords do not match", "error");
         return;
     }
 
@@ -120,7 +124,7 @@ passwordFormElement.addEventListener("submit", event => {
     saveUsers(users);
 
     passwordFormElement.reset();
-    showProfileMsg(passwordMsgElement, "Your password has been updated.", "success");
+    showProfileMsg(passwordMsgElement, "Password changed ✓", "success");
 })
 
 //reset
