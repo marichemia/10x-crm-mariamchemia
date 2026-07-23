@@ -96,7 +96,7 @@ recentClients.forEach(client => {
 
     const clientStatus = document.createElement("span");
     clientStatus.textContent = client.status;
-    clientStatus.classList.add("recent-client-status");
+    clientStatus.classList.add("recent-client-status",  `status-${client.status.toLowerCase()}`);
 
     clientItemElement.append(clientName, clientCompany, clientStatus);
     recentClientsElement.append(clientItemElement);

@@ -461,6 +461,31 @@ input {
   border-radius: 999px;
   font-size: 12px;
   font-weight: bold;
+  padding: 6px 12px;
+  border: 1.5px solid transparent;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: bold;
+}
+#recent-clients-list .recent-client-status.status-lead {
+  color: #1d4ed8;
+  background-color: #dbeafe;
+  border-color: #426fea;
+}
+#recent-clients-list .recent-client-status.status-contacted {
+  color: #7e22ce;
+  background-color: #f3e8ff;
+  border-color: #7e22ce;
+}
+#recent-clients-list .recent-client-status.status-won {
+  color: #15803d;
+  background-color: #dcfce7;
+  border-color: #15803d;
+}
+#recent-clients-list .recent-client-status.status-lost {
+  color: #b91c1c;
+  background-color: #ffd5d5;
+  border-color: #b91c1c;
 }
 
 .app-page.dark-theme .dashboard-welcome h1 {
@@ -505,9 +530,25 @@ input {
 .app-page.dark-theme #recent-clients-list .recent-client-company {
   color: #cbd5e1;
 }
-.app-page.dark-theme #recent-clients-list .recent-client-status {
-  color: #f3f4f6;
-  background-color: #1f2937;
+.app-page.dark-theme #recent-clients-list .recent-client-status.status-lead {
+  color: #bfdbfe;
+  background-color: #1e3a8a;
+  border-color: #3b82f6;
+}
+.app-page.dark-theme #recent-clients-list .recent-client-status.status-contacted {
+  color: #e9d5ff;
+  background-color: #581c87;
+  border-color: #a855f7;
+}
+.app-page.dark-theme #recent-clients-list .recent-client-status.status-won {
+  color: #bbf7d0;
+  background-color: #14532d;
+  border-color: #22c55e;
+}
+.app-page.dark-theme #recent-clients-list .recent-client-status.status-lost {
+  color: #fecaca;
+  background-color: #7f1d1d;
+  border-color: #ef4444;
 }
 
 @media (max-width: 900px) {
