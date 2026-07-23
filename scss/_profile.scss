@@ -212,6 +212,25 @@
 
 //dark theme styles
 body.dark-theme {
+    .profile-summary {
+        background-color: #1f2937;
+        color: #ffffff;
+
+        .profile-summary-details {
+           p {
+            color: #f4f4f4;
+           }
+
+           strong {
+            color: #f4f4f4;
+           }
+        }
+    }
+
+    #profile-summary-name {
+        color: #f4f4f4;
+    }
+
     .profile-card {
         background-color: #1f2937;
         border-color: #374151;
