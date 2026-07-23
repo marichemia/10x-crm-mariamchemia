@@ -1,6 +1,7 @@
 import {redirectIfAuthenticated} from './guard.js';
-import {getUsers, saveUsers, saveSession} from './storage.js';
+import {getUsers, saveUsers, saveSession, addDemoUser } from './storage.js';
 
+addDemoUser();
 redirectIfAuthenticated();
 
 const signupForm = document.getElementById('signup-form');

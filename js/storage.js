@@ -56,3 +56,26 @@ export function resetClientData() {
   localStorage.removeItem(CLIENTS_KEY);
   localStorage.removeItem(CLIENTS_INITIALIZED_KEY);
 }
+
+const DEMO_USER = {
+    id: "demo-user",
+    createdAt: "2026-07-23T00:00:00.000Z",
+    fullName: "Demo User",
+    email: "demo@10xcrm.com",
+    password: "Demo1234",
+    company: "10x"
+};
+
+export function addDemoUser() {
+  const users = getUsers();
+
+  const demoUserExists = users.some(user => {
+    return user.email.toLowerCase() ===
+      DEMO_USER.email.toLowerCase();
+  });
+
+  if (!demoUserExists) {
+    users.push(DEMO_USER);
+    saveUsers(users);
+  }
+}
