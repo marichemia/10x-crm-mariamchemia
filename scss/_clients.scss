@@ -390,6 +390,14 @@
 }
 }
 
+#client-form input.input-error,
+#client-form input.input-error:focus {
+    border-color: vars.$color-error;
+}
+
+#client-form input.input-error:focus {
+    border-width: 1.5px;
+}
 //client details modal window
 .client-details-window {
     max-width: 560px;
@@ -755,6 +763,15 @@ body.dark-theme {
                 box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
             }
         }
+    }
+
+    #client-form input.input-error,
+    #client-form input.input-error:focus {
+        border-color: vars.$color-error;
+    }
+
+    #client-form input.input-error:focus {
+        border-width: 1.5px;
     }
 
     .client-details-content {

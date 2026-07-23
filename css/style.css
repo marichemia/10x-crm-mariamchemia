@@ -888,6 +888,15 @@ input {
   display: none;
 }
 
+#client-form input.input-error,
+#client-form input.input-error:focus {
+  border-color: #c0392b;
+}
+
+#client-form input.input-error:focus {
+  border-width: 1.5px;
+}
+
 .client-details-window {
   max-width: 560px;
 }
@@ -1193,6 +1202,13 @@ body.dark-theme #client-form input, body.dark-theme #client-form select {
 body.dark-theme #client-form input:focus, body.dark-theme #client-form select:focus {
   border-color: #3d91f8;
   box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.25);
+}
+body.dark-theme #client-form input.input-error,
+body.dark-theme #client-form input.input-error:focus {
+  border-color: #c0392b;
+}
+body.dark-theme #client-form input.input-error:focus {
+  border-width: 1.5px;
 }
 body.dark-theme .client-details-content p {
   color: #f4f4f4;
