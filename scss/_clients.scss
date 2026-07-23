@@ -617,9 +617,12 @@
         flex-wrap: wrap;
     }
 
-    .clients-list {
-        grid-template-columns: repeat(2, 1fr);
+    .clients-results {
+        .clients-list {
+            grid-template-columns: repeat(2, 1fr);
+        }
     }
+    
 }
 
 @media (max-width: 650px) {
@@ -636,9 +639,12 @@
         width: 100%;
     }
 
-    .clients-list {
-        grid-template-columns: 1fr;
+    .clients-results {
+        .clients-list {
+            grid-template-columns: 1fr;
+        }
     }
+
 
     .client-details-content {
         p {

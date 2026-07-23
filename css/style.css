@@ -1093,7 +1093,7 @@ input {
   .status-filters {
     flex-wrap: wrap;
   }
-  .clients-list {
+  .clients-results .clients-list {
     grid-template-columns: repeat(2, 1fr);
   }
 }
@@ -1108,7 +1108,7 @@ input {
   .add-client-btn {
     width: 100%;
   }
-  .clients-list {
+  .clients-results .clients-list {
     grid-template-columns: 1fr;
   }
   .client-details-content p {
