@@ -1276,6 +1276,56 @@ body.dark-theme .client-reminder-btn:focus-visible {
   font-size: 28px;
 }
 
+.profile-summary {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #b8b8b8;
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(30, 55, 102, 0.08);
+}
+
+.profile-avatar {
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  color: #ffffff;
+  background-color: #1e3766;
+  border: 4px solid rgba(30, 55, 102, 0.12);
+  border-radius: 50%;
+  font-size: 26px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.profile-summary-details {
+  min-width: 0;
+}
+.profile-summary-details h2 {
+  margin: 0 0 8px;
+  color: #1e3766;
+  font-size: 26px;
+}
+.profile-summary-details > p {
+  margin: 7px 0;
+  color: #1f2937;
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+.profile-summary-details > p:first-of-type {
+  margin-bottom: 14px;
+  color: #6b7280;
+  font-size: 15px;
+}
+.profile-summary-details strong {
+  color: #1f2937;
+}
+
 .profile-sections {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1335,6 +1385,15 @@ body.dark-theme .client-reminder-btn:focus-visible {
 }
 .profile-save-btn:hover {
   background-color: rgb(18.4090909091, 33.75, 62.5909090909);
+}
+
+.profile-card input.input-error,
+.profile-card input.input-error:focus {
+  border-color: #c0392b;
+}
+
+.profile-card input.input-error:focus {
+  border-width: 1.5px;
 }
 
 .profile-message {

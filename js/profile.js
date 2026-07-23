@@ -49,14 +49,19 @@ const profileInforMsgElement = document.getElementById("profile-info-message");
 
 profileInfoElement.addEventListener("submit", event => {
     event.preventDefault();
+    profileInforMsgElement.textContent = "";
+    nameInputElement.classList.remove("input-error");
+
     const updatedName = nameInputElement.value.trim();
     const updatedCompany = companyInputElement.value.trim();
     //return if the input field is empty
     if(!updatedName) {
+        nameInputElement.classList.add("input-error");
         showProfileMsg(profileInforMsgElement, "Name field is empty.", "error");
         return;
     } else if (updatedName.length < 3) {
-        showProfileMsg(profileInforMsgElement, "Full name must be at least 3 character", "error");
+        nameInputElement.classList.add("input-error");
+        showProfileMsg(profileInforMsgElement, "Full name must be at least 3 characters", "error");
         return;
     }
 
@@ -98,24 +103,32 @@ passwordFormElement.addEventListener("submit", event => {
 
     //cancel if password change is invalid
     passwordMsgElement.textContent = "";
-    console.log(currentUser.password);
+    currentPasswordElement.classList.remove("input-error");
+    newPasswordElement.classList.remove("input-error");
+    conffirmPasswordElement.classList.remove("input-error");
+    console.log(currentUser.password); //testing
 
     if(currentPassword !== currentUser.password) {
+        currentPasswordElement.classList.add("input-error");
         showProfileMsg(passwordMsgElement, "Current password is incorrect", "error");
         return;
     }
 
     if (newPassword === currentUser.password) {
+        newPasswordElement.classList.add("input-error");
         showProfileMsg(passwordMsgElement, "New password must be different from the current one", "error");
         return;
     }
 
     if(!passwordValidation(newPassword)){
+        newPasswordElement.classList.add("input-error");
         showProfileMsg(passwordMsgElement, "Password must be at least 8 characters and contain a letter and a number", "error");
         return;
     }
 
     if(newPassword !== confirmedPassword) {
+        conffirmPasswordElement.classList.add("input-error");
+        newPasswordElement.classList.add("input-error");
         showProfileMsg(passwordMsgElement, "Passwords do not match", "error");
         return;
     }
