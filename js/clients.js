@@ -222,17 +222,12 @@ nextPgBtnElement.addEventListener("click", () => {
 
 clientsListElement.addEventListener ("change", event => {
     const statusSelect = event.target.closest(".client-status-select");
-    const clientId = Number(statusSelect.dataset.clientId);
-    const clientToUpdate = clients.find(client => client.id === clientId);
-    const clickedCard = event.target.closest(".client-card");
-    const selectedClient = clients.find(client => client.id === clientId);
-    //if status is being changed
-
-    if (!statusSelect) {
+     if (!statusSelect) {
         return;
     }
-
-    if (!clientToUpdate) {
+    const clientId = Number(statusSelect.dataset.clientId);
+    const clientToUpdate = clients.find(client => client.id === clientId);
+      if (!clientToUpdate) {
         return;
     }
 
@@ -260,10 +255,24 @@ const clientDetailsAvatarElement = document.getElementById("client-details-avata
 
 let editingClientId = null;
 
+function clearClientFormErrors() {
+    clientNameErrElement.textContent = "";
+    clientEmailErrElement.textContent = "";
+    clientPhoneErrElement.textContent = "";
+    clientValueErrElement.textContent = "";
+
+    clientNameInputElement.classList.remove("input-error");
+    clientEmailInputElement.classList.remove("input-error");
+    clientPhoneInputElement.classList.remove("input-error");
+    clientValueInputElement.classList.remove("input-error");
+}
+
+
 function openAddClientModal() {
     editingClientId = null;
     modalWindowTitleElement.textContent = "Add Client";
     clientFormElement.reset();
+    clearClientFormErrors();
     modalWindowElement.hidden = false;
 }
 
@@ -277,6 +286,8 @@ function openEditClientModal(client) {
     clientCompanyInputElement.value = client.company;
     clientStatusInputElement.value = client.status;
     clientValueInputElement.value = client.value;
+
+    clearClientFormErrors();
 
     modalWindowElement.hidden = false;
 }
@@ -369,7 +380,7 @@ clientFormElement.addEventListener("submit", async event => {
     clientValueInputElement.classList.remove("input-error");
 
     //validate name
-    if(clientNameInputElement.value.trim().length < 3) {
+    if(inputtedName.length < 3) {
         clientNameErrElement.textContent = "Name must be at least 3 characters";
         clientNameInputElement.classList.add("input-error");
         formValid = false;
@@ -385,7 +396,7 @@ clientFormElement.addEventListener("submit", async event => {
         clientEmailInputElement.classList.add("input-error");
         formValid = false;
     } else if (emailExists) {
-        clientEmailErrElement.textContent = "An account with this email already exists";
+        clientEmailErrElement.textContent = "A client with this email already exists";
         clientEmailInputElement.classList.add("input-error");
         formValid = false;
     }
@@ -433,16 +444,22 @@ clientFormElement.addEventListener("submit", async event => {
                 throw new Error(`POST request failed: ${response.status}`);
             }
 
-            const createdClientResponse = await response.json();
-            console.log(createdClientResponse); //testing
+            await response.json();
+            
+            //create ID locally 
+            const highestExistingId = clients.reduce((highestId, client) => {
+                return Math.max(highestId, Number(client.id) || 0);
+            }, 0)
+            const newClientId = highestExistingId + 1;
 
             const newClient = {
                 ...formData, 
-                id: createdClientResponse.id, 
+                id: newClientId, 
                 notes: [], 
                 createdAt: new Date().toISOString()
             };
 
+            console.log(newClient); //testing
             clients.unshift(newClient);
             currentPg = 1;
 
@@ -520,6 +537,8 @@ clientsListElement.addEventListener("click", async event => {
             console.error(e);
             showToast("Could not delete client. Please try again.", "error");
        }
+
+       return;
     } 
 
     //do not upen details modal when using status dropdown
